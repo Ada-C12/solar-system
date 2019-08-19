@@ -29,4 +29,8 @@ class SolarSystem
       raise ArgumentError, "No match found for planet."
     end
   end
+
+  def distance_between(pla_1, pla_2)
+    return (pla_1.distance_from_sun_km - pla_2.distance_from_sun_km).abs
+  end
 end

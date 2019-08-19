@@ -19,13 +19,17 @@ def main
   solar_system.add_planet(mercury)
   solar_system.add_planet(venus)
   solar_system.add_planet(earth)
+  solar_system.add_planet(mars)
+  solar_system.add_planet(jupiter)
 
   list = solar_system.list_planets
   # puts list
 
-  found_planet = solar_system.find_planet_by_name("Jupiter")
-  puts found_planet
-  puts found_planet.summary
+  # found_planet = solar_system.find_planet_by_name("Jupiter")
+  # puts found_planet
+  # puts found_planet.summary
+
+  puts solar_system.distance_between(mars, earth)
 end
 
 main
