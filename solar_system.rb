@@ -4,4 +4,7 @@ class SolarSystem
     @star_name = star_name
     @planets = Array.new
   end
+  def add_planet(Planet)
+    @planets << Planet
+  end
 end
