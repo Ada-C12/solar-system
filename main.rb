@@ -1,4 +1,5 @@
 require_relative "planet"
+require_relative "solar_system"
 
 def main
   # create 1st instance of planet
@@ -10,6 +11,11 @@ def main
   planets.each do |planet|
     puts "#{planet.summary}\n\n"
   end
+
+  sun = SolarSystem.new("Sun")
+  sun.add_planet(earth)
+  sun.add_planet(mars)
+  puts sun.list_planets
 end
 
 main
