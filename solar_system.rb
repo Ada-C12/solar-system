@@ -7,8 +7,13 @@ class SolarSystem
     @planets = planets
   end
   
-  # def solarsystem#add_planet(planet)
-  #   @planets << planet
-  # end
+  def add_planet(planet)
+    @planets << planet
+  end
+  
+  def list_planets
+    
+  end 
   
 end
+
