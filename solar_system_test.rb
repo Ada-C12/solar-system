@@ -15,14 +15,17 @@ describe 'Planet' do
     # Act
     summary = earth.summary
     # Assert
-    expect(summary ).must_include "The glorious planet Earth is blue-green-colored and has a mass of 5.972e+24 kilograms. It is 149600000.0 kilometers from the sun. And wouldn't you like to know a fun fact about Earth? It's the only planet known to support life."
+    expect(summary).must_include "The glorious planet Earth is blue-green-colored and has a mass of 5.972e+24 kilograms. It is 149600000.0 kilometers from the sun. And wouldn't you like to know a fun fact about Earth? It's the only planet known to support life."
   end
 
   it 'requests a positive number if a negative number is given for mass' do
     # Arrange
     earth = Planet.new('Earth', 'blue-green', -5.972e24, 1.496e8, 'It\'s the only planet known to support life.')
     # Act
-    
+    new_mass = earth.mass_kg
+    # Assert
+    expect(new_mass).must_include "Positive number for #{measure}, please: "
+
   end
 
 
