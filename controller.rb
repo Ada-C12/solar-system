@@ -26,6 +26,26 @@ class Controller
     puts @solar_system.find_planet_by_name(name).summary
   end
 
+  def add_planet
+    puts "what is the planet called?"
+    name = gets.chomp
+
+    puts "what color is it?"
+    color = gets.chomp
+
+    puts "what is its mass in kilograms?"
+    kg = gets.chomp
+
+    puts "how many kilometers is it from the sun?"
+    dist = gets.chomp
+
+    puts "what's a fun fact about this planet?"
+    fact = gets.chomp
+
+    planet = Planet.new(name, color, kg, dist, fact)
+    @solar_system.add_planet(planet)
+  end
+
   def control_loop
     loop do
       puts "\nwhat would you like to do next?\n"
