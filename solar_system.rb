@@ -11,9 +11,9 @@ class SolarSystem
   end
 
   def list_planets
-    "Planets orbiting #{ @star_name }\n" +
+    "\nPlanets orbiting #{ @star_name }\n" +
     @planets.map.with_index { |planet, index| "#{ index + 1 }.  #{ planet.name }" }
-            .join('\n')
+            .join("\n")
   end
 
   def find_planet_by_name(name)
