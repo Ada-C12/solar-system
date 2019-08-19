@@ -8,7 +8,7 @@ def main
   # print out some attributes
   planets = [earth,mars]
   planets.each do |planet|
-    puts "#{planet.name} is #{planet.color}. It is #{planet.distance_from_sun_km.round} km away from the sun. #{planet.fun_fact}"
+    puts "#{planet.summary}\n\n"
   end
 end
 
