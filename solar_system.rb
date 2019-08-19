@@ -15,4 +15,9 @@ class SolarSystem
       @planets.map.with_index {|planet,index| "#{index + 1}: #{planet.name}"}.join("\n")      
   end
 
+  def find_planet_by_name(planet_name)
+    planet_name = planet_name.capitalize
+    @planets.find { |planet| planet.name == planet_name }
+  end
+
 end
