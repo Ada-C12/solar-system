@@ -12,7 +12,6 @@ class SolarSystem
 
   def list_planets
     string = "Planets orbiting #{star_name}\n"
-    # why does item not need @ symbol
     @planets.each_with_index do |item, k|
       string << "#{k + 1}. #{item.name}\n"
     end
