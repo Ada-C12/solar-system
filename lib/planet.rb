@@ -17,4 +17,8 @@ class Planet
         
         @fun_fact = fun_fact
     end
+    
+    def summary
+        return "Planet's name is #{@name}, it's #{@color}. Fun fact about #{name}: #{fun_fact}"
+    end
 end

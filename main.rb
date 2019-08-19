@@ -8,7 +8,7 @@ def main
     fun_facts = ['Only planet known to support life', 'The planet is named after Mars, the Roman god of war']
     2.times do |index|
         planet = Planet.new(names[index], colors[index], mass_kgs[index], distances_from_sun_km[index], fun_facts[index])
-        puts "Planet ##{index + 1} is #{planet.name}, its color is #{planet.color}. Fun fact about it: #{planet.fun_fact}"
+        puts planet.summary
     end
 end
 main
