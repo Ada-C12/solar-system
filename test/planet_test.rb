@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
-require_relative '../planet'
+require_relative '../lib/planet'
 
 Minitest::Reporters.use!
 
