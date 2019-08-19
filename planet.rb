@@ -11,7 +11,7 @@ class Planet
   end
   
   def summary
-    return "#{@name} details: #{@color} in color, #{@mass_kg} kg heavy, #{@distance_from_sun_km} km from sun, Interesting Fact: #{@fun_fact}"
+    return "#{@name} is a planet that is #{@color} in color, weighs #{@mass_kg} kg, and sits #{@distance_from_sun_km} km from the sun. Interesting Fact: #{@fun_fact}."
   end
   
   def valid_weight
