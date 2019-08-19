@@ -5,14 +5,10 @@ class Planet
         @name = name
         @color = color
         
-        if mass_kg <= 0
-            raise ArgumentError.new("Input must be a positive number")
-        end
-        @mass_kg = mass_kg
+        raise ArgumentError.new("Input must be a positive number") if mass_kg <= 0
+        @mass_kg = mass_kg   
         
-        if distance_from_sun_km <= 0
-            raise ArgumentError.new("Input must be a positive number")
-        end
+        raise ArgumentError.new("Input must be a positive number") if distance_from_sun_km <= 0
         @distance_from_sun_km = distance_from_sun_km
         
         @fun_fact = fun_fact
