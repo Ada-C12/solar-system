@@ -6,8 +6,9 @@ def main
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life', 'none (we are not cool enough)')
   mercury = Planet.new('Mercury', 'dark-grey', 3.285e23, 5.791e7, 'Closest planet to sun', 'Sailor Mercury')
 
-  return "#{earth.name}'s Gaurdian: #{earth.sailor_moon_guardian}; #{mercury.name}'s Gaurdian: #{mercury.sailor_moon_guardian}"
+  puts earth.summary
+  puts mercury.summary
 
 end
 
-puts main
+main
