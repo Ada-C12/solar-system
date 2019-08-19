@@ -9,8 +9,14 @@ class Planet
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
 
-    if @mass_kg <= 0 || @distance_from_sun_km <= 0
-      raise ArgumentError.new("The number must be greater than 0.")
+    until @mass_kg > 0 
+      puts "Mass kilograms must be greater than 0! Please insert a new number:"
+      @mass_kg = gets.chomp.to_i
+    end
+
+    until @distance_from_sun_km > 0
+      puts "Distance from the sun must be greater than 0! Please insert a new number:"
+      @distance_from_sun_km = gets.chomp.to_i
     end
   end
 
