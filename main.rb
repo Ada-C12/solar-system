@@ -16,6 +16,12 @@ def main
   sun.add_planet(earth)
   sun.add_planet(mars)
   puts sun.list_planets
+
+  puts "To compare - Earth: #{earth}"
+
+  found_planet = sun.find_planet_by_name("Earth")
+  puts "Searching for Earth.."
+  puts found_planet
 end
 
 main
