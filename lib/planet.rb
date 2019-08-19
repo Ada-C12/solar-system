@@ -28,7 +28,7 @@ class Planet
 
   def summary
     if checks_if_zero?
-      return "#{@name} is a #{@color} planet with a mass of #{@mass_kg}. It is #{@distance_from_sun_km}km away from the sun. A fun fact about #{@name} is that it #{trim_fun_fact}."
+      return "#{@name} is a #{@color} planet with a mass of #{@mass_kg}kg. It is #{@distance_from_sun_km}km away from the sun. A fun fact about #{@name} is that it #{trim_fun_fact}."
     else
       raise ArgumentError.new("#{@mass_kg == 0 ? 'Mass (kg)' : 'Distance from sun (km)'} must not equal zero")
     end

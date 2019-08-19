@@ -6,8 +6,10 @@ def main
   earth = Planet.new("earth", "green", 55.9, 10, "earth is big")
   solar_system = SolarSystem.new("Sol")
   solar_system.add_planet(earth)
-  return solar_system.list_planets
+  # return solar_system.list_planets
 
+  found_planet = solar_system.find_planet_by_name("earth")
+  return found_planet
 end
 
 puts main

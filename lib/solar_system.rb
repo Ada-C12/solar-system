@@ -1,6 +1,3 @@
-require_relative 'planet'
-require_relative 'main'
-
 class SolarSystem
 
   attr_reader :star_name, :planets
@@ -24,5 +21,12 @@ class SolarSystem
     return planets_string
   end
 
+  def find_planet_by_name(planet_to_find)
+    @planets.map do |planet|
+      if planet.name == planet_to_find
+        return planet.summary
+      end
+    end 
+  end
 
 end
