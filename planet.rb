@@ -11,7 +11,7 @@ class Planet
   end
   
   def summary 
-    return "#{ @name } has a #{ @color } color, weighs approximately #{ @mass_kg }, and is #{ @distance_from_sun_km } far from the Sun. A fun fact about #{ @name } is: #{ @fun_fact }"
+    return "#{ @name } has a #{ @color } color, weighs approximately #{ @mass_kg } kgs, and is #{ @distance_from_sun_km } kms from the Sun. A fun fact about #{ @name } is: #{ @fun_fact }"
   end 
   
 end
