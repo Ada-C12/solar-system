@@ -11,10 +11,13 @@ class SolarSystem
     def add_planet(planet)
         @planets << planet
     end
-
+    
+    
     def list_planets
-        return @planets
-        puts "Planets orbiting #{star_name}"
-        @planets
+        planet_names = []
+        @planets.each_with_index do |planet,index| 
+            planet_names << "#{index + 1}. #{planet.name}"
+        end
+        return "Planets orbiting #{star_name}\n#{planet_names.join("\n")}"
     end
 end   
