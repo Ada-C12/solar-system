@@ -18,6 +18,14 @@ describe 'Planet' do
       expect(earth.distance_from_sun_km).must_equal 100
       expect(earth.fun_fact).must_equal "Only planet known to support life."
     end
+    
+    it "throws an error if mass_kg is an invalid number" do
+      expect {Planet.new('Earth', 'blue-green', 0, 100, 'Only planet known to support life.')}.must_raise ArgumentError
+    end
+    
+    it "throws an error if distance_from_sun_km is an invalid number" do
+      expect {Planet.new('Earth', 'blue-green', 500, -5, 'Only planet known to support life.')}.must_raise ArgumentError
+    end
   end
   
   describe "summary method" do
