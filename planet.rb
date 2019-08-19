@@ -10,25 +10,7 @@ class Planet
     @fun_fact = fun_fact
   end
   
-  def name
-    return @name
-  end
-  
-  def color
-    return @color
-  end
-  
-  def mass_kg
-    return @mass_kg
-  end
-  
-  def distance_from_sun_km
-    return @distance_from_sun_km
-  end
-  
-  def fun_fact
-    return @fun_fact
-  end
+  attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
   
   def summary
     return "#{name} is #{color}, is #{mass_kg} kg, #{distance_from_sun_km} km from the sun, and the #{fun_fact.downcase}."
