@@ -1,5 +1,5 @@
-require_relative "planet"
-require_relative "solar_system"
+require_relative "lib/planet"
+require_relative "lib/solar_system"
 
 def get_planet_details(solar_system)
   print "Which planet are you interested in? "    
@@ -9,7 +9,7 @@ end
 
 def add_new_planet(solar_system)
   print "What is the planet's name?: "
-  name = gets.chomp
+  name = gets.chomp.capitalize
   
   print "What color is it?: "
   color = gets.chomp
@@ -44,7 +44,7 @@ def main
   solar_system.add_planet(giga)
   solar_system.add_planet(duo)
   
-  puts "\nWelcome to Dianna's Solar System"
+  puts "Welcome to Dianna's Solar System"
   
   play = true
   while play
