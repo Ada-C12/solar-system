@@ -10,4 +10,8 @@ class Planet
     @fun_fact = fun_fact
   end
   
+  def summary
+    return "\nPlanet Data: \nName: #{@name} \nColor: #{@color} \nMass (kg): #{@mass_kg} \nDistance from the sun (km): #{@distance_from_sun_km} \nFun Fact: #{@fun_fact}."
+  end
+  
 end
