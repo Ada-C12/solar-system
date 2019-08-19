@@ -11,10 +11,6 @@ class Planet
     @fun_fact = fun_fact
   end
 
-  def color=(new_color)
-    @color = new_color
-  end
-
   def summary
     puts "The planet #{@name} is #{@color} in color and is #{mass_kg} kgs.
      It is #{distance_from_sun_km} kms from the Sun. Fun fact: #{fun_fact}"
