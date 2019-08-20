@@ -81,17 +81,24 @@ def main
   solar_system.add_planet(neptune)
   
   user_input = ""
+  valid_inputs = ["list planets", "planet details", "exit"]
   until user_input.downcase == "exit"
-    puts "\nPlease choose an option: \n1) List Planets \n2) Exit"
+    puts "\nPlease choose an option: \n1) List Planets \n2) Planet Details\n3) Exit"
     user_input = gets.chomp
     
-    while user_input.downcase != "list planets" && user_input.downcase != "exit"
+    while !valid_inputs.include? user_input.downcase
       print "Error! Your input is invalid. Please enter either 'List Planets' or 'Exit': "
       user_input = gets.chomp
     end
     
     if user_input.downcase == "list planets"
       puts solar_system.list_planets
+    elsif user_input.downcase == "planet details"
+      print "Great! Please enter a planet name to see its details: "
+      chosen_planet = gets.chomp
+      chosen_planet = solar_system.find_planet_by_name(chosen_planet)
+      puts "\n#{chosen_planet}"
+      puts chosen_planet.summary rescue nil
     else
       exit
     end
