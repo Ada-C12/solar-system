@@ -17,18 +17,12 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_name)
-    # if @planets.include?(planet_name.downcase)
-    #   return planet
-    # else
-    #   return false
+    # @planets.each do |planet|
+    #   if planet.name == planet_name.capitalize
+    #     return planet
+    #   end
     # end
-    @planets.each do |planet|
-      if planet.name == planet_name.capitalize
-        return planet
-      end
-    end
-    return nil
-
+    # return nil
+    @planets.find {|planet| planet.name == planet_name.capitalize} 
   end
-
 end

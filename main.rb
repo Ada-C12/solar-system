@@ -18,6 +18,7 @@ def main
   solar_system.add_planet(saturn)
   list = solar_system.list_planets
   puts list
+  puts
   
 
   found_planet = solar_system.find_planet_by_name('jupitar')
