@@ -16,19 +16,23 @@ puts "\n"
 
 solar_system = SolarSystem.new('Sol')
 
-earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'only planet known to support life')
 
 solar_system.add_planet(earth)
 
-mars = Planet.new('Mars', 'brownish-red', 6.4171e23, 2.2794e8, 'The second smallest planet in the solar system behind Mercury')
+mars = Planet.new('Mars', 'brownish-red', 6.4171e23, 2.2794e8, 'second smallest planet in the solar system behind Mercury')
 
 solar_system.add_planet(mars)
+
+venus = Planet.new('Venus', 'yellowish-white', 4.867e24, 107523626, 'planet with longest rotation period of any planet in the Solar System and rotating in the opposite direction to most other planets')
+
+solar_system.add_planet(venus)
 
 list = solar_system.list_planets
 puts list
 puts "\n"
 
-found_planet = solar_system.find_planet_by_name('eArth')
+found_planet = solar_system.find_planet_by_name('eARth')
 
 puts found_planet
 puts found_planet.summary
