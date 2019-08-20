@@ -16,7 +16,7 @@ class SolarSystem
     
     @planets.each_with_index do |planet, number|
       string2 = "#{number + 1}. #{planet.name} \n"
-      string.concat(string2) 
+      string.concat(string2)
     end
     
     return string
@@ -25,10 +25,16 @@ class SolarSystem
   
   def find_planet_by_name(planet_name)
     
-    found = 'not found'    
+    found = "not found"
+    # until found == planet_name
+    #   @planets.each do |planet|
+    #     found = planet.name
+    #   end  
+    # end
+    
     @planets.each do |planet|
       if planet.name == planet_name
-        found = planet
+        found = planet.name
         return found
       end  
     end

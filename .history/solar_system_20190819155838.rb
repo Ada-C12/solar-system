@@ -16,7 +16,7 @@ class SolarSystem
     
     @planets.each_with_index do |planet, number|
       string2 = "#{number + 1}. #{planet.name} \n"
-      string.concat(string2) 
+      string.concat(string2)
     end
     
     return string
