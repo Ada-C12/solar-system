@@ -13,9 +13,8 @@ class SolarSystem
 
   def list_planets
     return "Planets orbiting #{star_name}
-    #{gen_list(@planets)}"
+    #{gen_list(@planets).join( )}" # Revisit this when multiple planets to add new lines in between if needed
   end
-
 
   def gen_list(items_to_list)
     count = 1
@@ -27,7 +26,14 @@ class SolarSystem
     end
     return list
   end
+
+  def find_planet_by_name(planet)
+    planet_names = planet.name
+    return planet_names.include?(planet)
+  end
+
 end
+
 
 
 
