@@ -13,8 +13,20 @@ describe "planet" do
     }.must_raise ArgumentError
     
     expect {
-      initialize("Earth", "Blue", 10, 0, "yo")
+      initialize("Earth", "Blue", 10, "egg", "yo")
     }.must_raise ArgumentError
   end
+  
+  it "will successfully build a planet with given arguments" do
+    planet = Planet.new("Earth", "Blue", 10, 9, "taro lives here")
+    
+    expect (planet.name).must_equal "Earth"
+    expect (planet.color).must_equal "Blue"
+    expect (planet.mass_kg).must_equal 10
+    expect (planet.distance_from_sun_km).must_equal 9
+    expect (planet.fun_fact).must_equal "taro lives here"
+    
+  end
+  
   
 end
