@@ -1,5 +1,6 @@
-require_relative 'planet'
-require_relative 'solar_system'
+require_relative 'lib/planet'
+require_relative 'lib/solar_system'
+
 
 
 def main
