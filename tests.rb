@@ -146,8 +146,8 @@ describe "TESTING solar_system.rb" do
     
     #### FIX THIS SHIT!!!! ####
     # test for invalid args: typeError from non-String args 
-    pluto = Planet.new('pluto', 'purple', 100, 200, 'Pluto is NOT in ss_sample!!!')
-    bad_args = [123, [], {}, true, false, nil, pluto]
+    fake_planet = Planet.new('a', 'b', 1, 2, 'should raise error b/c fcn calls for strings')
+    bad_args = [123, [], {}, true, false, nil, fake_planet]
     bad_args.each do |bad_arg|
       expect {
         ss_sample.find_planet_by_name(bad_arg)
@@ -162,6 +162,11 @@ describe "TESTING solar_system.rb" do
       }.must_raise ArgumentError
     end
     
+    # test for invalid arg: valid Planet obj but not in ss_sample
+    pluto = Planet.new('pluto', 'purple', 100, 200, 'Pluto is NOT in ss_sample!!!')
+    expect {
+      ss_sample.find_planet_by_name('PLUTO')
+    }.must_raise ArgumentError
   end
   
   it "Test for distance_between()" do
