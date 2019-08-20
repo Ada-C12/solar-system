@@ -9,17 +9,15 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 describe "Planet class" do
     describe "Constructor" do
         it "Error checks input being passed in for mass_kg" do
-            expect {Planet.new('Earth', 'blue-green', -5.972e24, 1.496e8, 'Only planet known to support life')}.must_raise ArgumentError 
-            
+            expect {Planet.new(name:'Earth', color: 'blue-green', mass_kg: -5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')}.must_raise ArgumentError   
         end
         
         it "Error checks input being passed in for distance_from_sun_km" do
-            expect {Planet.new('Earth', 'blue-green', 5.972e24, -1.496e8, 'Only planet known to support life')}.must_raise ArgumentError 
-            
+            expect {Planet.new(name:'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: -1.496e8, fact: 'Only planet known to support life')}.must_raise ArgumentError   
         end
         
         it "Initializes instance variables" do
-            earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+            earth = Planet.new(name:'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             expect (earth.name).must_equal 'Earth'
             expect (earth.fun_fact).must_equal 'Only planet known to support life'
             expect (earth.color).must_equal 'blue-green'
@@ -28,7 +26,7 @@ describe "Planet class" do
         end
         
         it "Does not allow reassigning instance variables" do
-            earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+            earth = Planet.new(name:'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             expect (earth.name).must_equal 'Earth'
             expect (earth.fun_fact).must_equal 'Only planet known to support life'
             expect (earth.color).must_equal 'blue-green'
@@ -41,12 +39,12 @@ describe "Planet class" do
     
     describe "summary method" do
         it "Returns a string" do
-            earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+            earth = Planet.new(name:'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             expect (earth.summary).must_be_instance_of String
         end
         
         it "Summarizes planet's information" do
-            earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+            earth = Planet.new(name:'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             expect (earth.summary).must_equal "Planet's name is Earth, it's blue-green. Fun fact about Earth: Only planet known to support life"
         end            
     end

@@ -10,7 +10,7 @@ def main
     
     solar_system = SolarSystem.new('Sol')
     2.times do |index|
-        planet = Planet.new(names[index], colors[index], mass_kgs[index], distances_from_sun_km[index], fun_facts[index])
+        planet = Planet.new(name: names[index], color: colors[index], mass_kg: mass_kgs[index], distance: distances_from_sun_km[index], fact: fun_facts[index])
         puts planet.summary
         solar_system.add_planet(planet)
     end

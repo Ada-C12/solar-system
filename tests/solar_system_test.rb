@@ -44,12 +44,11 @@ describe "SolarSystem class" do
     
     describe "add_planet method" do
         it "Add a planet to a solar system" do
-            mars = Planet.new("Mars", "red-orange", 6.417e23, 2.279e8, 'The planet is named after Mars, the Roman god of war')
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
             star_name = "Sol"
             solar_system = SolarSystem.new(star_name)      
             solar_system.add_planet(mars)
             
-            expect (solar_system.planets.empty?).must_equal false
             expect (solar_system.planets.include? mars).must_equal true
         end
         
@@ -64,8 +63,8 @@ describe "SolarSystem class" do
     
     describe "list_planets method" do
         it "Returns a string" do
-            mars = Planet.new("Mars", "red-orange", 6.417e23, 2.279e8, 'The planet is named after Mars, the Roman god of war')
-            earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
+            earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             
             star_name = "Sol"
             solar_system = SolarSystem.new(star_name)
@@ -76,8 +75,8 @@ describe "SolarSystem class" do
         end
         
         it "Prints out formatted list of planets" do
-            mars = Planet.new("Mars", "red-orange", 6.417e23, 2.279e8, 'The planet is named after Mars, the Roman god of war')
-            earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
+            earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             
             star_name = "Sol"
             solar_system = SolarSystem.new(star_name)
@@ -92,8 +91,8 @@ describe "SolarSystem class" do
     
     describe "find_planet_by_name" do
         it "Takes in a string as input" do
-            mars = Planet.new("Mars", "red-orange", 6.417e23, 2.279e8, 'The planet is named after Mars, the Roman god of war')
-            earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
+            earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             
             star_name = "Sol"
             solar_system = SolarSystem.new(star_name)
@@ -104,8 +103,8 @@ describe "SolarSystem class" do
         end
         
         it "Error checks input" do
-            mars = Planet.new("Mars", "red-orange", 6.417e23, 2.279e8, 'The planet is named after Mars, the Roman god of war')
-            earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
+            earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             
             star_name = "Sol"
             solar_system = SolarSystem.new(star_name)
@@ -119,8 +118,8 @@ describe "SolarSystem class" do
         end
         
         it "Returns nil if planet isn't in the SolarSystem" do
-            mars = Planet.new("Mars", "red-orange", 6.417e23, 2.279e8, 'The planet is named after Mars, the Roman god of war')
-            earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
+            earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             
             star_name = "Sol"
             solar_system = SolarSystem.new(star_name)
@@ -132,9 +131,9 @@ describe "SolarSystem class" do
         end
         
         it "Returns the first planet it find whose name match planet name" do
-            mars = Planet.new("Mars", "red-orange", 6.417e23, 2.279e8, 'The planet is named after Mars, the Roman god of war')
-            earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
-            another_earth = Planet.new('Earth', 'pink', 4.000e24, 1.800e8, 'Only planet known to have the same name as our Earth')
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
+            earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
+            another_earth = Planet.new(name: 'Earth', color: 'pink', mass_kg: 4.000e24, distance: 1.800e8, fact: 'Only planet known to have the same name as our Earth')
             
             star_name = "Sol"
             solar_system = SolarSystem.new(star_name)
