@@ -13,19 +13,28 @@ class SolarSystem
   end
   
   def add_planet(planet)
-    @planets << planet.name
+    # adding entire planet object to planets array
+    # (previous code just added the planet name)
+    @planets << planet
   end
   
   def list_planets
-    # planets_list = []
-    # planets.map.each_with_index do |planet, index|
-    #   planets_list << index + 1
-    #   planets_list << planet
     planet_strings = ""
     @planets.each_with_index do |planet, index|
-      planet_strings = planet_strings + "#{index + 1}" + ". " + planet + "\n"
+      planet_strings = planet_strings + "#{index + 1}" + ". " + planet.name + "\n"
     end
     return "Planets orbiting #{star_name}: " + "\n" + "#{planet_strings}"
   end
+  
+  def find_planet_by_name(planet_name)
+    # return planet object associated with name all downcawe
+    @planets.each do |planet|
+      if planet.name.downcase == planet_name.downcase
+        return planet
+      end
+    end
+  end
+  
 end
+
 

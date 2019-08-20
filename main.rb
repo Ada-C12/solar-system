@@ -1,3 +1,5 @@
+# main.rb, solar_system and planet driver code
+
 require_relative 'planet'
 require_relative 'solar_system'
 
@@ -15,7 +17,7 @@ def main
   jupiter = Planet.new('Jupiter', 'white-orange-brown-red', 1.898e27, 778.5e6, 'Fastest-spinning planet in the solar system')
   
   # call method summary on earth and print result
-  puts earth.summary
+  earth.summary
   
   # instantiate solar_system
   solar_system = SolarSystem.new('Sol')
@@ -31,8 +33,14 @@ def main
   list = solar_system.list_planets
   
   # output list
-  puts list
+  puts list 
   
+  found_planet = solar_system.find_planet_by_name('Earth')
+  
+  # found_planet is an instance of class Planet
+  puts found_planet
+  
+  puts found_planet.summary
 end
 
 main
