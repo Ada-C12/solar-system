@@ -12,6 +12,7 @@ class Planet
   def summary
     %(
 name: #{ name }\ncolor: #{ @color }\nmass in kg: #{ mass_kg }
-distance from the sun: #{ @distance_from_sun_km }\nfun fact: #{ fun_fact })
+distance from the sun: #{ @distance_from_sun_km }\nfun fact: #{ fun_fact }
+    )
   end
 end
