@@ -15,7 +15,7 @@ def main
   end
 
   # CLI
-  menu_options = ["list planets", "exit"]
+  menu_options = ["list planets", "planet details", "exit"]
   user_input = ""
   until user_input == "exit"
     puts "\nWhat would you like to do next?"
@@ -24,6 +24,8 @@ def main
     case user_input
     when "list planets"
       puts "\n#{system.list_planets}"
+    when "planet details"
+      # planet_details_by_name
     when "exit"
       puts "\nexiting solar system"
     else
