@@ -8,18 +8,17 @@ class SolarSystem
     @planets = []
   end
   
-  def add_planet (planet_name)
-    @planets << Planet.name
+  def add_planet (cur_planet)
+    @planets << cur_planet.name
   end
   
   def list_planets
-    count = 1
+    count = 0
     puts "Planets orbiting #{@star_name}"
-    @planets.each do |cur_planet|
-      return "#{count}. #{cur_planet}"
-      count += 1
+    list = @planets.map do |cur_planet|
+      planet = "#{count+=1}. #{cur_planet}"
     end
-    
+    return list
   end
   
 end
