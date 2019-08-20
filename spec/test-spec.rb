@@ -7,21 +7,49 @@ Minitest::Reporters.use!
 
 require_relative '../lib/planet'
 require_relative '../lib/main'
+require_relative '../lib/solar_system'
 
-describe "Planet class instance" do
-
-  it "returns false for mass that equals 0" do
-    earth = Planet.new("Earh", "blue-green", 0, 3, "is big")
-
-    expect(earth.checks_if_zero?).must_equal false
-
+describe "solar system" do
+  describe "Planet class instance" do
+    
+    it "returns false for mass that equals 0" do
+      earth = Planet.new("Earh", "blue-green", 0, 3, "is big")
+      
+      expect { earth.summary }.must_raise ArgumentError
+      
+    end
+    
+    it "returns false for distance that equals 0" do
+      earth = Planet.new("Earh", "blue-green", 3, 0, "is big")
+      
+      expect{earth.summary}.must_raise ArgumentError
+      
+    end
+    
   end
-
-  it "returns false for distance that equals 0" do
-    earth = Planet.new("Earh", "blue-green", 3, 0, "is big")
-
-    expect(earth.checks_if_zero?).must_equal false
-
+  
+  describe "Find planet by name" do
+    
+    it "returns 'planet not found' if there is no planet with the inputted planet name" do
+      solar_system = SolarSystem.new("Sol")
+      solar_system.planets << Planet.new("earth", 1, 1, 1, 1)
+      found_planet = solar_system.find_planet_by_name("Krypton")
+      
+      expect(found_planet).must_match "That planet is not in this solar system."
+      
+    end
+    
+    it "returns all planet summaries with the inputted planet name" do
+      solar_system = SolarSystem.new("Sol")
+      solar_system.planets << Planet.new("earth", "blue", 44, 23, "is smaller than the sun")
+      solar_system.planets << Planet.new("Earth", "green", 22, 33, "is larger than a peanut")
+      found_planet = solar_system.find_planet_by_name("earth")
+      
+      expect(found_planet.length).must_equal 2
+      
+    end
+    
+    
   end
-
+  
 end

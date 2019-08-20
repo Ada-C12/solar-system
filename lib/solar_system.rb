@@ -23,8 +23,11 @@ class SolarSystem
 
   def find_planet_by_name(planet_to_find)
     @planets.map do |planet|
-      if planet.name == planet_to_find
+#CHECK BELOW CODE
+      if planet.name.upcase == planet_to_find.upcase
         return planet.summary
+      else
+        return "That planet is not in this solar system."
       end
     end 
   end
