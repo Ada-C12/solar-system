@@ -9,7 +9,7 @@ require_relative '../lib/planet'
 require_relative '../lib/main'
 require_relative '../lib/solar_system'
 
-describe "solar system" do
+describe "solar system project" do
   describe "Planet class instance" do
     
     it "returns false for mass that equals 0" do
@@ -28,7 +28,7 @@ describe "solar system" do
     
   end
   
-  describe "Find planet by name" do
+  describe "Solar System class instance" do
     
     it "returns 'planet not found' if there is no planet with the inputted planet name" do
       solar_system = SolarSystem.new("Sol")
@@ -47,6 +47,15 @@ describe "solar system" do
       
       expect(found_planet[0..4]).must_match "earth"
       expect(found_planet.reverse[0..4]).must_match ".tuna"
+      
+    end
+    
+    it "measures the distance between two planets" do
+      solar_system = SolarSystem.new("Sol")
+      solar_system.planets << Planet.new("Krypton", "green", 66, 98765, "is made of Kryptonite")
+      solar_system.planets << Planet.new("Krippton", "purple", 55, 87654, "is populated by Krippaehnes")
+      
+      expect(solar_system.distance_between).must_equal 11111
       
     end
     
