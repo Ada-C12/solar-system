@@ -127,10 +127,10 @@ describe "SolarSystem class" do
             solar_system.add_planet(mars)
             
             planet = "VEnus"
-            expect (solar_system.find_planet_by_name(planet)).must_equal nil
+            assert_nil(solar_system.find_planet_by_name(planet))
         end
         
-        it "Returns the first planet it find whose name match planet name" do
+        it "Returns the first planet found by name" do
             mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
             earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             another_earth = Planet.new(name: 'Earth', color: 'pink', mass_kg: 4.000e24, distance: 1.800e8, fact: 'Only planet known to have the same name as our Earth')
