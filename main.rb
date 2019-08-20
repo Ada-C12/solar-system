@@ -74,8 +74,18 @@ def add_new_planet(solar_system)
   print "What is the planet's name?: "
   name = gets.chomp.capitalize
   
+  while name == ""
+    print "Please enter a valid planet name: "
+    name = gets.chomp.capitalize
+  end
+  
   print "What color is it?: "
   color = gets.chomp
+  
+  while color == ""
+    print "Please enter a valid color: "
+    color = gets.chomp
+  end
   
   print "What is its mass in kg?: "
   mass_kg = gets.chomp.to_f
@@ -95,6 +105,11 @@ def add_new_planet(solar_system)
   
   print "What is a fun fact about it?: "
   fun_fact = gets.chomp
+  
+  while fun_fact == ""
+    print "Please enter a fun fact: "
+    fun_fact = gets.chomp
+  end
   
   planet = Planet.new(name, color, mass_kg, distance_from_sun_km, fun_fact)
   
