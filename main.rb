@@ -13,35 +13,40 @@ def check_planet(planet_array)
       puts "#{index + 1}: #{planet.summary}"
     end
     
-    #TODO Add error checking here
     print "Please select a number: "
     selection = gets.chomp.to_i - 1
+    
+    until selection >= 0 && selection < planet_array.length
+      print "Please select a valid number: "
+      selection = gets.chomp.to_i - 1
+    end
     
     return planet_array[selection]
   end
 end
 
+def get_planet(solar_system)
+  print "Please enter a planet name: "
+  planet_name = gets.chomp.capitalize
+  planet_array = solar_system.find_planet_by_name(planet_name)
+  return check_planet(planet_array)
+end
+
 def get_distance_between(solar_system)
-  print "What is the first planet? "
-  first_planet_name = gets.chomp.capitalize
-  first_planet_array = solar_system.find_planet_by_name(first_planet_name)  
-  verified_first_planet = check_planet(first_planet_array)
+  first_planet = get_planet(solar_system)
   
-  if verified_first_planet.class == String
-    return verified_first_planet
+  if first_planet.class == String
+    return first_planet
   end
   
-  print "What is the second planet? "
-  second_planet_name = gets.chomp.capitalize
-  second_planet_array = solar_system.find_planet_by_name(second_planet_name)
-  verified_second_planet = check_planet(second_planet_array)
+  second_planet = get_planet(solar_system)
   
-  if verified_second_planet.class == String
-    return verified_second_planet
+  if second_planet.class == String
+    return second_planet
   end
   
-  distance = solar_system.distance_between(verified_first_planet, verified_second_planet)
-  return "The distance between #{verified_first_planet.name} and #{verified_second_planet.name} is #{distance} km."
+  distance = solar_system.distance_between(first_planet, second_planet)
+  return "The distance between #{first_planet.name} and #{second_planet.name} is #{distance} km."
 end
 
 def get_planet_details(solar_system)
