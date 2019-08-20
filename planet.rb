@@ -13,4 +13,5 @@ class Planet
   def summary
     return "Planet: #{@name}.\nColor: #{@color}.\nMass: #{@mass_kg} kg.\nDistance from Sun: #{@distance_from_sun_km} kms.\nFun fact: #{@fun_fact}.\n\n"
   end
+  
 end
