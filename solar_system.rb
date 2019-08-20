@@ -1,3 +1,5 @@
+require_relative 'planet'
+
 class SolarSystem
   attr_reader :star_name, :planets
   
@@ -6,14 +8,27 @@ class SolarSystem
     @planets = []
   end
   
-  add_planet (Planet)
-  planets << Planet 
-  
-  list_planets 
-  output_string = "Planets orbiting #{star_name}:" + 
-  planets.each do |planet|
-    "#{index(planet) + 1}. #{planet\n}"
+  def add_planet(planet_name)
+    @planets << planet_name 
   end 
-  return output_string 
+  
+  def find_planet_by_name(input)
+    planets.each do |planet|
+      if planet.name == input.capitalize 
+        return planet
+      end 
+    end 
+    return "We could not find your planet :/"
+  end 
+  
+  def list_planets 
+    output_list = "Planets orbiting #{star_name} include:\n" 
+    i = 1 
+    planets.each do |planet|
+      output_list << "#{i}. #{planet.name}\n"
+      i += 1
+    end 
+    return output_list
+  end 
+  
 end
-
