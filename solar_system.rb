@@ -24,10 +24,13 @@ class SolarSystem
   end 
 
   def find_planet_by_name(search_planet)
-    planet_name = search_planet.downcase
-    if @planets.name.include?(planet_name) == true
-      return @planet.summary
+    #change search planet to match planet name in class (capitalize)
+    search_planet = search_planet.capitalize
+    #if the search planet matches the name of class planet
+    @planets.each do |planet|
+      if planet.name == search_planet
+        return planet
+      end 
     end 
   end 
-
 end 
