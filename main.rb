@@ -11,11 +11,29 @@ def main
   
   
   list = solar_system.list_planets
-  puts list
+  
   
   found_planet = solar_system.find_planet_by_name('Earth')
-  puts found_planet
-  puts found_planet.summary
+  #puts found_planet
+  #puts found_planet.summary
+  
+  puts "=======YOUR SOLAR SYSTEM======="
+  puts
+  puts "Welcome to your solar system! This solar system revolves around the star 'Sol'."
+  puts 
+  puts "Would you like to enter your solar system? (y/n)"
+  play = gets.chomp
+  
+  while play == "y"
+    puts "Your two options are to 'list' the planets or 'exit'."
+    user_option = gets.chomp
+    if user_option.downcase == "list"
+      puts list
+    end
+  end
+  
+  
+  
   
 end
 

@@ -15,11 +15,12 @@ class SolarSystem
   
   def list_planets
     count = 0
-    puts "Planets orbiting #{@star_name}"
-    list = @planets.map do |cur_planet|
-      planet = "#{count+=1}. #{cur_planet.name}"
+    string = ""
+    @planets.each do |cur_planet|
+      planet = "#{count+=1}. #{cur_planet.name}\n"
+      string += planet
     end
-    return list
+    return "Planets orbiting #{@star_name}\n" + string
   end
   
   def find_planet_by_name (name)
