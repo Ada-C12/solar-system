@@ -10,6 +10,6 @@ class Planet
     attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
 
     def summary
-        return "\nPlanet: #{@name} \nColor: #{@color} \nMass: #{@mass_kg} kg \nDistance from Sun: #{@distance_from_sun_km} km \nFun Fact: #{@fun_fact}\n "
+        return "\nPlanet: #{@name.capitalize} \nColor: #{@color} \nMass: #{@mass_kg} kg \nDistance from Sun: #{@distance_from_sun_km} km \nFun Fact: #{@fun_fact}\n "
     end
 end

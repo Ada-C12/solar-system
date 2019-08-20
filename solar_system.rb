@@ -14,7 +14,7 @@ class SolarSystem
     
     def list_planets
         planet_names = []
-        @planets.each_with_index { |planet,index| planet_names << "#{index + 1}. #{planet.name}"}
+        @planets.each_with_index { |planet,index| planet_names << "#{index + 1}. #{planet.name.capitalize}"}
         return "Planets orbiting #{star_name}\n#{planet_names.join("\n")}"
     end
 
