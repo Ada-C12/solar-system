@@ -16,22 +16,21 @@ class SolarSystem
 
   def list_planets
     i = 1
+    planets_list = []
     "Planets orbiting #{star_name}"
     @planets.each do |planet|
-      @planets_list.push("#{i}. #{planet.name}")
-
+      planets_list.push("#{i}. #{planet.name}")
       i += 1
     end
     return planets_list
   end
 
   def find_planet_by_name(planet_to_find)
-    planets.each do |planet|
+    @planets.each do |planet|
       if planet.name.downcase == planet_to_find.downcase
         return planet
       end
-
-      return nil
     end
+    return nil
   end
 end
