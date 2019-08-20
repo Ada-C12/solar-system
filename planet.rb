@@ -13,7 +13,7 @@ class Planet
   end
   
   def summary
-    return "#{name} is #{color}, is #{mass_kg} kg, #{distance_from_sun_km} km from the sun, and the #{fun_fact.downcase}."
+    return "#{@name} is #{@color}, is #{@mass_kg} kg, #{@distance_from_sun_km} km from the sun, and the #{@fun_fact.downcase}."
   end
   
 end
