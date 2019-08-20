@@ -27,14 +27,22 @@ def main
       control = gets.chomp
     when "planet details", "details", "detail"
       puts "What planet would you like to learn about?"
-      planet = gets.chomp.capitalize
+      selected_planet = gets.chomp.capitalize
       
-      found_planet = solar_system.find_planet_by_name(planet)
-      puts "\n"
-      puts found_planet.summary
+      if solar_system.planets.any? { |planet| planet.name == selected_planet }
+        
+        found_planet = solar_system.find_planet_by_name(selected_planet)
+        puts "\n"
+        puts found_planet.summary
+        
+        puts "\nWhat action would you like to take? List Planets, Planet Details, or Exit."
+        control = gets.chomp
+      else
+        puts "That is not a valid planet."
+        puts "What action would you like to take? List Planets, Planet Details, or Exit."
+        control = gets.chomp
+      end
       
-      puts "\nWhat action would you like to take? List Planets, Planet Details, or Exit."
-      control = gets.chomp
     when "add", "add planet"
       puts "What are the details of the planet you would like to add?"
       puts "\nEnter the Planet Name:"
@@ -42,9 +50,9 @@ def main
       puts "\nEnter the Planet Color:"
       color = gets.chomp.downcase
       puts "\nEnter the Planet mass kg:"
-      mass_kg = gets.chomp
+      mass_kg = gets.chomp.to_f
       puts "\nEnter the Planet distance from the sun in km:"
-      distance_from_sun_km = gets.chomp
+      distance_from_sun_km = gets.chomp.to_f
       puts "\nEnter a fun fact about the #{name}:"
       fun_fact = gets.chomp.downcase
       
@@ -53,13 +61,16 @@ def main
       
       puts "\nWhat action would you like to take? List Planets, Planet Details, or Exit."
       control = gets.chomp
-      # handles invalid user input
     else
+      # handles invalid user input
       puts "Please enter Valid input: List Planets, Planet Details, Add Planet, or Exit."
       control = gets.chomp
     end
   end
-  
+
+  # testing for pulling names of planets from array--->
+  # p solar_system.planets[0].name
+  # solar_system.planets.each { |planet| puts planet.name }
 end
 
 main
