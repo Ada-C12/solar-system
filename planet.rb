@@ -1,5 +1,4 @@
-require 'pry'
-
+############## HELPER FUNCTION ##############
 def getPosFloat(promptQ)
   # prompts user w/ promtQ string until acceptable float given, which is returned
   input_valid = false
@@ -19,6 +18,7 @@ def getPosFloat(promptQ)
     end
   end
 end
+############## end HELPER FUNCTION ##############
 
 
 class Planet
@@ -42,30 +42,23 @@ class Planet
       
     end
     
-    # @mass_kg and @distance_from_sun_km are validated
+    # @mass_kg and @distance_from_sun_km have been validated
     @mass_kg = mass_info[:val]
     @distance_from_sun_km = dist_info[:val]
     
     [name, color, fun_fact].each do |arg|
-      if arg == nil
-        raise ArgumentError, "#{arg} is missing!"
-      elsif !(arg.is_a? String)
+      if !(arg.is_a? String)
         raise ArgumentError, "#{arg} is not a string!"
       else
-        @name = name
+        @name = name.capitalize
         @color = color
         @fun_fact = fun_fact
       end
     end
   end
-    
-    def summary
-      return "A planet called #{@name} is #{@color} and weighs #{@mass_kg}kg, it's #{@distance_from_sun_km}km away from the sun.  Fun Fact: #{@fun_fact}!"
-    end
-    
-    
+  
+  def summary
+    return "A planet called #{@name} is #{@color} and weighs #{@mass_kg}kg, it's #{@distance_from_sun_km}km away from the sun.  Fun Fact: #{@fun_fact}!"
   end
   
-  
-  # binding.pry
-  puts ""
+end
