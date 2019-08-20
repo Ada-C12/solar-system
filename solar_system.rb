@@ -12,6 +12,10 @@ class SolarSystem
     @planets << planet_name 
   end 
   
+  def distance_between(planet_1, planet_2)
+    return (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs
+  end 
+  
   def find_planet_by_name(input)
     planets.each do |planet|
       if planet.name == input.capitalize 
