@@ -12,7 +12,9 @@ class SolarSystem
   
   def list_planets
     list = "\nPlanets orbiting #{@star_name}"
-    @planets.each_with_index { |planet, index| list += "\n#{index + 1}. #{planet.name}" }
+    @planets.each_with_index do |planet, index| 
+      list += "\n#{index + 1}. #{planet.name}" 
+    end
     return list
   end
   
@@ -24,6 +26,6 @@ class SolarSystem
     planet_A = find_planet_by_name(name_A)
     planet_B = find_planet_by_name(name_B)
     
-    return planet_A.distance_from_sun_km - planet_B.distance_from_sun_km
+    return (planet_A.distance_from_sun_km - planet_B.distance_from_sun_km).abs
   end
 end
