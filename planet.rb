@@ -1,3 +1,5 @@
+require_relative 'solar-system'
+
 class Planet
 
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
@@ -5,9 +7,25 @@ class Planet
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
     @name = name
     @color = color
-    @mass_kg = mass_kg
+    @mass_kg = massChecker(mass_kg)
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
+  end
+
+  def massChecker(mass_kg)
+    if mass_kg > 0
+      return mass_kg
+    else
+      raise ArgumentError
+    end
+  end
+
+  def distanceChecker(distance_from_sun_km)
+    if distance_from_sun_km > 0
+      return distance_from_sun_km
+    else
+      raise ArgumentError
+    end
   end
 
   def summary
