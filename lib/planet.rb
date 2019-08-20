@@ -10,7 +10,7 @@ class Planet
   end
 
   def summary
-    puts "The planet #{@name} is #{@color} in color and is #{mass_kg} kgs.
-     It is #{distance_from_sun_km} kms from the Sun. Fun fact: #{fun_fact}"
+    puts "The planet #{@name} is #{@color} in color and is #{@mass_kg} kgs.
+     It is #{@distance_from_sun_km} kms from the Sun. Fun fact: #{@fun_fact}"
   end
 end

@@ -1,5 +1,14 @@
-require_relative "planet"
-require_relative "solar_system"
+require_relative "lib/planet"
+require_relative "lib/solar_system"
+
+def get_number
+  user_planet_number = gets.chomp
+  while user_planet_number.empty? || (!user_planet_number.match("^[\-0-9]*$"))
+    puts "Invalid input. Please enter a number in standard notation"
+    user_planet_number = gets.chomp
+  end
+  return user_planet_number.to_f
+end
 
 def main
   untenable = SolarSystem.new("Untenable")
@@ -12,30 +21,50 @@ def main
 
   user_input = nil
   puts "Hey user, what do you want to do? 
-  (please type 'list' to list the planets, 'details' to show planet information,  or 'exit' to leave the program"
+      'list' to list the planets, 
+      'details' to show planet information,
+      'add' to add another planet to the solar system (How wonderful to discover a new planet!)
+      'exit' to leave the program"
   user_input = gets.chomp.downcase
   until user_input == "exit"
     if user_input == "list"
       list = untenable.list_planets
       puts list
-      puts "What do you wanna do next? (Please type 'list' to list the planets, 'details' to show planet information, or 'exit' to leave the program"
+      puts "What do you wanna do next? 
+      'list' to list the planets, 
+      'details' to show planet information,
+      'add' to add another planet to the solar system (How wonderful to discover a new planet!)
+      'exit' to leave the program"
     elsif user_input == "details"
       puts "Which planet do you want to learn more about?"
       puts untenable.list_planets
       planet_select = gets.chomp.downcase
       planet = untenable.find_planet_by_name(planet_select)
+      puts planet.summary
       while planet == nil
         puts "Please enter a REAL planet name. Select from the list."
         puts untenable.list_planets
         planet_select = gets.chomp.downcase
         planet = untenable.find_planet_by_name(planet_select)
       end
-      puts planet.summary
-      puts "What do you wanna do next? (Please type 'list' to list the planets, 'details' to show planet information, or 'exit' to leave the program"
+    elsif user_input == "add"
+      puts "What is the name of your new planet?"
+      user_planet = gets.chomp.downcase
+      puts "What color is your planet?"
+      user_planet_color = gets.chomp.downcase
+      puts "What is the mass of your planet in kgs? Please enter a number with standard notation"
+      user_mass = get_number
+      puts "How far from the Untenable Star is your planet in kms? Please enter a number in standard notation"
+      user_distance = get_number
+      puts "Tell me something cool about your planet."
+      user_fun_fact = gets.chomp
+      user_planet = Planet.new(name: user_planet, color: user_planet_color, mass_kg: user_mass, distance_from_sun_km: user_distance, fun_fact: user_fun_fact)
+      untenable.add_planet(user_planet)
+      puts "Cool! Here's the summary of your planet!"
+      puts user_planet.summary
     else
       puts "INVALID INPUT. Please enter 'list' or 'exit'."
     end
-
     user_input = gets.chomp.downcase
   end
 end
