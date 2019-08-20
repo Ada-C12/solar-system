@@ -10,16 +10,6 @@ class Planet
   
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
   
-  # Removes any extraneous pronouns from the fun fact
-  def trim_fun_fact
-    if @fun_fact[0..2] == "it "
-      @fun_fact.slice!(0, 3)
-      return @fun_fact
-    elsif @fun_fact[0..2] == @name[0..2]
-      @fun_fact.slice!(0, @name.length + 1) # removes planet name + extra space
-      return @fun_fact
-    end
-  end
   
   # ArgumentError will be raised if kg or km are not greater than zero
   def checks_if_zero?
