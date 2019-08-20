@@ -25,7 +25,7 @@ def main
     when "list planets"
       puts "\n#{system.list_planets}"
     when "planet details"
-      # planet_details_by_name
+      planet_details_by_name(system)
     when "exit"
       puts "\nexiting solar system"
     else
@@ -33,6 +33,23 @@ def main
     end
   end
 
+end
+
+def planet_details_by_name(system)
+  puts "\nWhat is the name of the planet you would like to learn about?"
+  planets = system.planets
+  valid_input = false
+  until valid_input == true
+    planet_name_input = gets.chomp.capitalize
+    valid_input = planets.any? { |planet| planet.name == planet_name_input }
+    if valid_input == true
+      puts "\nDetails for #{planet_name_input}:"
+      planet_to_display = system.find_planet_by_name(planet_name_input)
+      puts "#{planet_to_display.summary}"
+    else
+      puts "\nPlanet not found - please input a different planet name:"
+    end
+  end
 end
 
 main
