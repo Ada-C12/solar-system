@@ -46,7 +46,7 @@ describe "solar system project" do
       found_planet = solar_system.find_planet_by_name("earth")
       
       expect(found_planet[0..4]).must_match "earth"
-      expect(found_planet.reverse[0..4]).must_match ".tuna"
+      expect(found_planet.reverse[0..4]).must_match "tunae"
       
     end
     
