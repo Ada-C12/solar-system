@@ -147,7 +147,7 @@ describe "SolarSystem class" do
     end
     
     describe "distance_between method" do
-        it "Takes in 2 planets as arguments" do
+        it "Takes in 2 planet names as arguments" do
             mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
             earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             
@@ -156,8 +156,8 @@ describe "SolarSystem class" do
             solar_system.add_planet(earth)
             solar_system.add_planet(mars)
             
-            venus = "Venus"
-            expect {solar_system.distance_between(earth, venus)}.must_raise ArgumentError
+            venus = 1
+            expect {solar_system.distance_between(earth.name, venus)}.must_raise ArgumentError
         end
         
         it "Takes in existing 2 planets in a solar system as arguments" do
@@ -169,7 +169,7 @@ describe "SolarSystem class" do
             solar_system.add_planet(earth)
             solar_system.add_planet(mars)
             
-            expect {solar_system.distance_between(earth, mercury)}.must_raise ArgumentError
+            expect {solar_system.distance_between(earth.name, mercury.name)}.must_raise ArgumentError
         end
         
         it "Returns a number" do
@@ -181,7 +181,7 @@ describe "SolarSystem class" do
             solar_system.add_planet(earth)
             solar_system.add_planet(mars)
             
-            distance_between_earth_and_mars = solar_system.distance_between(earth, mars)
+            distance_between_earth_and_mars = solar_system.distance_between(earth.name, mars.name)
             expect (distance_between_earth_and_mars).must_be_instance_of Integer
         end
         
@@ -194,7 +194,7 @@ describe "SolarSystem class" do
             solar_system.add_planet(earth)
             solar_system.add_planet(mars)
             
-            distance_between_earth_and_mars = solar_system.distance_between(earth, mars)
+            distance_between_earth_and_mars = solar_system.distance_between(earth.name, mars.name)
             expect (distance_between_earth_and_mars).must_equal 78300000
         end
     end
