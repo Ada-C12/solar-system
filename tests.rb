@@ -6,13 +6,13 @@ require 'minitest/reporters'
 Minitest::Reporters.use!
 
 
-######################################
+######### TEST PLANET.rb ################
 describe "TESTING planet.rb initialization" do
   # Planet.new(name, color, mass, distance, fun_fact)
   
-  it "Tests for valid planet" do
+  it "Tests for valid args" do
     p1 = Planet.new('faketopia', 'rainbow', 100, 200, 'this should work!')
-    assert(p1.name == 'faketopia')
+    assert(p1.name == 'faketopia'.capitalize)
     assert(p1.color == 'rainbow')
     assert(p1.mass_kg == 100)
     assert(p1.distance_from_sun_km == 200)
@@ -45,23 +45,39 @@ describe "TESTING planet.rb initialization" do
     
   end
   
-  # it "Test for valid error checking on mass & distance args" do
-  #   # Planet.new() has built-in methods to keep prompting until valid args given
-  #   puts "\n\nExpecting Planet.new() to prompt u to give a valid pos integer/float:"
-  #   p2 = Planet.new("A", "B", -1, -2, "C")
-  #   assert(p2.mass_kg > 0)
-  #   assert(p2.distance_from_sun_km > 0)
-  
-  #   puts "\nExpecting Planet.new() to prompt u to give a valid pos integer/float:"
-  #   p3 = Planet.new('a', 'b', nil, nil, 'c')
-  #   assert(p3.mass_kg > 0)
-  #   assert(p3.distance_from_sun_km > 0)
-  # end
+  it "Test for valid error checking on mass & distance args" do
+    # Planet.new() has built-in methods to keep prompting until valid args given
+    puts "\n\nExpecting Planet.new() to prompt u to give a valid pos integer/float:"
+    p2 = Planet.new("A", "B", -1, -2, "C")
+    assert(p2.mass_kg > 0)
+    assert(p2.distance_from_sun_km > 0)
+    
+    puts "\nExpecting Planet.new() to prompt u to give a valid pos integer/float:"
+    p3 = Planet.new('a', 'b', nil, nil, 'c')
+    assert(p3.mass_kg > 0)
+    assert(p3.distance_from_sun_km > 0)
+  end
   
 end
+######### end TEST PLANET.rb ################
 
 
-######################################
+
+########### HELPER FCNs ##############
+def solarSystemSample
+  # for individ testing purposes: returns a solar system with 2 Planet objs (earth & mars) 
+  earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+  mars = Planet.new('mars', 'red', 5.972e22, 1.495e8, 'It has aliens on it')
+  solar_sys = SolarSystem.new('Sun')
+  solar_sys.add_planet(earth)
+  solar_sys.add_planet(mars)
+  return solar_sys
+end
+########### end helpers ##############
+
+
+
+######### TEST SOLAR_SYSTEM.rb ################
 describe "TESTING solar_system.rb" do
   
   it "Test for initialization" do
@@ -72,7 +88,7 @@ describe "TESTING solar_system.rb" do
     
     # test for invalid SolarSystem objs
     expect {
-      ss = SolarSystem.new('Sun2', 'extra stuff')
+      ss = SolarSystem.new('Sun2', 'unwelcome arg')
     }.must_raise ArgumentError
     
     bad_args = [nil, '', {}, []]
@@ -83,65 +99,86 @@ describe "TESTING solar_system.rb" do
     end
   end
   
-  # SEED DATA FOR TESTING METHODS
-  earth_seed = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
-  mars_seed = Planet.new('mars', 'red', 5.972e22, 1.495e8, 'It has aliens on it')
-  ss_seed = SolarSystem.new('Sun')
-  
   it "Test for add_planet()" do
+    # sample data
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    mars = Planet.new('mars', 'red', 5.972e22, 1.495e8, 'It has aliens on it')
+    dupe = earth
+    ss_sample = SolarSystem.new('Sun')
+    
     # test for valid args
-    good_args = [earth_seed, mars_seed]
+    good_args = [earth, mars]
     good_args.each do |good_arg|
-      ss_seed.add_planet(good_arg)
-      assert(ss_seed.planets.include? good_arg)
+      ss_sample.add_planet(good_arg)
+      assert(ss_sample.planets.include? good_arg)
     end
     
     # test to exclude duplicate planets
-    dupe = earth_seed
     expect {
-      ss_seed.add_planet(dupe)
+      ss_sample.add_planet(dupe)
     }.must_raise ArgumentError
     
     # test for invalid args
-    non_Planet_obj = String.new()
-    bad_args = [123, "fake", [], {}, non_Planet_obj, true, false, nil]
+    bad_args = [123, "fake", [], {}, String.new, true, false, nil]
     bad_args.each do |bad_arg|
       expect {
-        ss_seed.add_planet(bad_arg)
+        ss_sample.add_planet(bad_arg)
       }.must_raise ArgumentError
     end
   end
   
   it "Test for list_planets()" do
-    # to read off of @planets, it'll already have to pass add_planet()'s checks
-    # ss_seed has earth_seed & mars_seed already added at this point
-    planet_list_str = ss_seed.list_planets
-    # puts "\n\nHERE IT IS:", ss_seed.planets, planet_list_str
-    assert(planet_list_str.include? earth_seed.name)
-    assert(planet_list_str.include? mars_seed.name)
+    ss_sample = solarSystemSample
+    
+    planet_list_str = ss_sample.list_planets
+    assert(planet_list_str.include? "Earth")
+    assert(planet_list_str.include? "Mars")
   end
   
-  # it "Test for find_planet_by_name()" do
-  #   # ss_seed has earth_seed & mars_seed already added at this point
-  #   good_args = ['earth_seed', 'earth_seed', 'earth_seed', 'mars_seed']
-  #   good_args.each do |good_arg|
-  #     returned_obj = ss_seed.find_planet_by_name(good_arg)
-  #     assert(returned_obj.name.upcase == good_arg.upcase)
-  #   end
-  # end
+  it "Test for find_planet_by_name()" do
+    ss_sample = solarSystemSample
+    
+    good_args = ['earth', 'EARTH', 'eARTH', 'mArS']
+    good_args.each do |good_arg|
+      returned_obj = ss_sample.find_planet_by_name(good_arg)
+      assert (returned_obj.name.upcase == good_arg.upcase)
+    end
+    
+    #### FIX THIS SHIT!!!! ####
+    # test for invalid args: typeError from non-String args 
+    pluto = Planet.new('pluto', 'purple', 100, 200, 'Pluto is NOT in ss_sample!!!')
+    bad_args = [123, [], {}, true, false, nil, pluto]
+    bad_args.each do |bad_arg|
+      expect {
+        ss_sample.find_planet_by_name(bad_arg)
+      }.must_raise TypeError
+    end
+    
+    # test for invalid args: ArgumentError from nonsense String args
+    bad_args = ["e a r t h", "fake", String.new]
+    bad_args.each do |bad_arg|
+      expect {
+        ss_sample.find_planet_by_name(bad_arg)
+      }.must_raise ArgumentError
+    end
+    
+  end
   
-  # it "Test for distance_between()" do
-  #   # distance_between() incorporated find_planet_by_name() checks
-  #   # ss_seed has earth_seed & mars_seed already added at this point
-  
-  #   # test for valid args
-  #   puts "\n\nHERE IT IS:"
-  #   puts ss_seed.inspect
-  #   # puts ss_seed.distance_between('earth_seed', 'mars_seed')
-  
-  # end
+  it "Test for distance_between()" do
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    mars = Planet.new('mars', 'red', 5.972e22, 1.495e8, 'It has aliens on it')
+    ss_sample = solarSystemSample
+    
+    # test for valid args
+    result = ss_sample.distance_between('earth', 'MARS')
+    manual_calc = (earth.distance_from_sun_km - mars.distance_from_sun_km).abs
+    assert(result == manual_calc)
+    
+    # test for invalid args
+    # unnecessary, will already have been caught by find_planet_by_name() therein
+  end
 end
 
-
+######### TEST SOLAR_SYSTEM.rb ################
 
 

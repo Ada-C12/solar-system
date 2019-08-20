@@ -2,9 +2,9 @@ class SolarSystem
   attr_reader :star_name, :planets
   
   def initialize(star_name)
-    # will accept star_name as numbers, maybe they're unnamed and it's just coords?
+    # will accept star_name as numbers, in case they're unnamed and it's just numerical coords or ids
     if ([String, Integer, Float].include? star_name.class) && (star_name != '')
-      @star_name = star_name.to_s 
+      @star_name = star_name.to_s.capitalize 
       @planets = []
     else
       raise ArgumentError, "Invalid parameter: #{star_name}"
@@ -12,6 +12,7 @@ class SolarSystem
   end
   
   def add_planet(planet_instance)
+    # addes planet_instance to @ planets, after passing error checks (1. must be Planet obj, 2. must not be in @planets laready)
     if planet_instance.is_a? Planet
       unless @planets.include? planet_instance
         @planets << planet_instance
@@ -24,6 +25,7 @@ class SolarSystem
   end
   
   def list_planets
+    # Returns a string of @planets summary
     lines = ["Planets orbiting #{@star_name}"]
     @planets.each_with_index do |planet, index|
       lines << "#{index+1}. #{planet.name}"
@@ -45,7 +47,6 @@ class SolarSystem
     # assuming planets are in a straight line, returning absolute value of the difference for shortest possible distance
     
     # match arg string to the actual Planet obj
-    # will raise error if not valid Planet obj
     planet1 = find_planet_by_name(planet1_str)
     planet2 = find_planet_by_name(planet2_str)
     
@@ -55,13 +56,3 @@ class SolarSystem
   end
   
 end
-
-
-# # starter pack
-# require './planet'
-# earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
-# mars = Planet.new('Mars', 'red', 5.972e22, 1.495e8, 'It has aliens on it')
-# solar_system = SolarSystem.new('Sun')
-# solar_system.add_planet(earth)
-# solar_system.add_planet(mars)
-# p solar_system.distance_between('EARTH', 'mars')
