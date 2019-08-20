@@ -30,6 +30,13 @@ describe 'SolarSystem' do
       
       expect(solar_system.planets).must_equal [mercury, mars]
     end
+    
+    it "raises an error if you add something that is not a planet" do
+      solar_system = SolarSystem.new("Sol")
+      cat = "Garfield"
+      
+      expect {solar_system.add_planet(cat)}.must_raise ArgumentError  
+    end
   end
   
   describe "list_planets method" do
@@ -49,42 +56,34 @@ describe 'SolarSystem' do
   end
   
   describe "find_planet_by_name method" do
-    it "returns a message if the planet is not found" do
+    it "returns an empty array if no planet is found" do
       solar_system = SolarSystem.new("Sunny")
       
-      expected_string = "This solar system does not have a planet named Earth."
-      
-      expect(solar_system.find_planet_by_name("earth")).must_equal expected_string    
+      expect(solar_system.find_planet_by_name("earth")).must_equal []
     end
     
-    it "correctly finds a single planet that exists in the system" do
+    it "returns an array with one item for a single planet" do
       solar_system = SolarSystem.new("Sunny")
       
       venus = Planet.new("Venus", "purple", 40, 70, "This was named after a Greek god.")
-      uranus = Planet.new("Uranus", "gray", 25, 80, "This planet is gaseous.")
+      pluto = Planet.new("Pluto", "gray", 25, 80, "This planet is gaseous.")
       
       solar_system.add_planet(venus)
-      solar_system.add_planet(uranus)
+      solar_system.add_planet(pluto)
       
-      expected_string = "Planet: Venus, Color: purple, Mass: 40 kg, Distance from sun: 70 km, Fun fact: This was named after a Greek god."
-      
-      expect(solar_system.find_planet_by_name("venus")).must_equal expected_string 
+      expect(solar_system.find_planet_by_name("PLUTO")).must_equal [pluto]
     end
     
-    it "correctly finds two planets with the same name" do
+    it "returns an array of items for multiple planets with the same name" do
       solar_system = SolarSystem.new("Sun")
       
       venus = Planet.new("Venus", "purple", 40, 70, "This was named after a Greek god.")
-      uranus = Planet.new("Venus", "gray", 25, 80, "This planet is gaseous.")
+      venus_two = Planet.new("Venus", "gray", 25, 80, "This planet is gaseous.")
       
       solar_system.add_planet(venus)
-      solar_system.add_planet(uranus)
+      solar_system.add_planet(venus_two)
       
-      expected_string = "There are mutliple planets with that name:" \
-      "\nPlanet: Venus, Color: purple, Mass: 40 kg, Distance from sun: 70 km, Fun fact: This was named after a Greek god." \
-      "\nPlanet: Venus, Color: gray, Mass: 25 kg, Distance from sun: 80 km, Fun fact: This planet is gaseous."
-      
-      expect(solar_system.find_planet_by_name("Venus")).must_equal expected_string
+      expect(solar_system.find_planet_by_name("Venus")).must_equal [venus, venus_two]
     end
   end
   
@@ -104,11 +103,11 @@ describe 'SolarSystem' do
     it "calculates distance when second planet is closet to sun " do
       solar_system = SolarSystem.new("Sun")
       
-      mars = Planet.new("Mars", "red", 20, 100, "The movie Total Recall is about Mars.")
       venus = Planet.new("Venus", "purple", 40, 200, "This was named after a Greek god.")
+      mars = Planet.new("Mars", "red", 20, 100, "The movie Total Recall is about Mars.")
       
-      solar_system.add_planet(mars)
       solar_system.add_planet(venus)
+      solar_system.add_planet(mars)
       
       expect(solar_system.distance_between(venus, mars)).must_equal 100
     end

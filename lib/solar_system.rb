@@ -6,8 +6,12 @@ class SolarSystem
     @planets = []
   end
   
-  def add_planet(planet)
-    @planets.push(planet) 
+  def add_planet(planet)  
+    if planet.class == Planet
+      @planets.push(planet) 
+    else 
+      raise ArgumentError.new("#{planet} is not a planet.")
+    end
   end
   
   def list_planets
@@ -16,26 +20,16 @@ class SolarSystem
     @planets.each_with_index do |planet, index|
       planet_list << "\n#{index + 1}. #{planet.name}"
     end
+    
     return planet_list
   end  
   
   def find_planet_by_name(planet_name)
-    list = @planets.select do |planet|
+    planet = @planets.select do |planet|
       planet.name.capitalize == planet_name.capitalize
     end
     
-    if list.length == 0
-      return "This solar system does not have a planet named #{planet_name.capitalize}."
-    elsif list.length == 1
-      return list[0].summary
-    else
-      message = "There are mutliple planets with that name:"
-      
-      list.each do |planet|
-        message << "\n#{planet.summary}"
-      end
-      return message
-    end
+    return planet
   end
   
   def distance_between(first_planet, second_planet)
