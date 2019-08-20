@@ -19,5 +19,11 @@ class SolarSystem
     @planets.map.with_index {|planet,index| "#{index + 1}. #{planet.name}"}.join("\n")
   end
   
+  # Create a method SolarSystem#find_planet_by_name, that takes the name of a planet as a string, and returns the corresponding instance of Planet. The lookup should be case-insensitive, so that Earth, earth and eArTh all return the same planet.
+  def find_planet_by_name(inst_planet)
+    inst_planet = inst_planet.capitalize
+    return @planets.find {|planet| planet.name.capitalize==inst_planet.capitalize}
+  end
+  
   
 end
