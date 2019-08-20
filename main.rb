@@ -15,7 +15,7 @@ def main
   end
 
   # CLI
-  menu_options = ["list planets", "planet details", "exit"]
+  menu_options = ["list planets", "planet details", "add planet", "exit"]
   user_input = ""
   until user_input == "exit"
     puts "\nWhat would you like to do next?"
@@ -26,6 +26,8 @@ def main
       puts "\n#{system.list_planets}"
     when "planet details"
       planet_details_by_name(system)
+    when "add planet"
+      get_new_planet_details(system)
     when "exit"
       puts "\nexiting solar system"
     else
@@ -50,6 +52,51 @@ def planet_details_by_name(system)
       puts "\nPlanet not found - please input a different planet name:"
     end
   end
+end
+
+def format_detail(required_format, input)
+  case required_format
+  when "string"
+    return input.to_s
+  when "number"
+    return input.to_f
+  else
+    raise ArgumentError.new("Invalid input")
+  end
+end
+
+def get_new_planet_details(system)
+  puts "Please enter all information about this new planet."
+  request_details = {
+    # to_s, or String? ???
+    "name" => {format: "string", request: "name"},
+    "color" => {format: "string", request: "color"},
+    "mass_kg" => {format: "number", request: "mass in kilograms"},
+    "distance_from_sun_km" => {format: "number", request: "distance from the solar system center in kilometers"},
+    "fun_fact" => {format: "string", request: "fun fact"}
+  }
+
+  new_planet_details = {}
+
+  request_details.each do |detail, info|
+    input = ""
+    until input != ""
+      puts "Planet #{info[:request]}:"
+      input = gets.chomp
+    end
+    # info["type"] == "string" ? \
+    # new_planet_details[detail] = input.capitalize \
+    # : new_planet_details[detail] = input.to_i
+    # ORRRR:
+    # set newplanetdetails[detail] equal to input sent to formatter
+    new_planet_details[detail] = format_detail(info[:format],input)
+  end
+  puts "new planet details: #{new_planet_details}"
+  system.add_planet(Planet.new(new_planet_details["name"], \
+    new_planet_details["color"], \
+    new_planet_details["mass_kg"], \
+    new_planet_details["distance_from_sun_km"], \
+    new_planet_details["fun_fact"]))
 end
 
 main
