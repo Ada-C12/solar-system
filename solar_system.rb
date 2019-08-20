@@ -17,6 +17,6 @@ class SolarSystem
   end
 
   def find_planet_by_name(name)
-    @planets.find { |planet| planet.name == name }
+    @planets.find { |planet| planet.name.upcase == name.upcase }
   end
 end
