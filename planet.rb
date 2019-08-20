@@ -13,8 +13,8 @@ class Planet
   def summary
     return "#{@name} has a #{@color} color. A fun fact about #{@name}: #{@fun_fact}."
   end
-  
 end
+
 
 
 
