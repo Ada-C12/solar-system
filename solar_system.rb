@@ -7,22 +7,34 @@ class SolarSystem
 # take one parameter, star_name, and saves it in an instance variable
 # create @planets array, which will store all the planets
   def initialize(star_name)
+    if star_name.class != String
+      raise TypeError.new "Star name should be a string"
+    elsif star_name == nil
+      raise TypeError.new "Star name should not be nil"
+    end
+
     @star_name = star_name
     @planets = []
   end
 
 # add_planet takes an instance of Planet as a parameter and adds it to the list of planets
   def add_planet(planet)
+    if planet.class != Planet
+      raise TypeError.new "Inputed planet should be instance of class planet"
+    elsif planet == nil
+      raise TypeError.new "Inputed planet should not be nil"
+    end
+
     @planets << planet
   end
   
 # list_planets returns (not puts) a string containing a list of all the planets in the system
   def list_planets
-    planet_names = []
+    planetname_display = []
     @planets.each_with_index do |planet,index| 
-      planet_names << "#{index + 1}. #{planet.name.capitalize}"
+      planetname_display << "#{index + 1}. #{planet.name.capitalize}"
     end
-    return "Planets orbiting #{star_name}\n#{planet_names.join("\n")}"
+    return "Planets orbiting #{star_name}\n#{planetname_display.join("\n")}"
   end
 
 # takes the name of a planet as a string, and returns the corresponding instance of Planet
@@ -35,12 +47,24 @@ class SolarSystem
     end
    
     @planets.each do |planet_instance|
-      return planet_instance if planet.upcase == planet_instance.name.upcase
+      if planet.upcase == planet_instance.name.upcase
+        return planet_instance 
+      end
     end
   end
   
   # distance_between takes two planet names as parameters and returns the distance between them
   def distance_between(planet_1, planet_2)
+    if planet_1.class != String
+      raise TypeError.new "Inputed Planet 1 should be string"
+    elsif planet_1 == nil
+      raise TypeError.new "Inputed Planet 1 should not be nil"
+    elsif planet_2.class != String
+      raise TypeError.new "Inputed Planet 2 should be string"
+    elsif planet_2 == nil
+      raise TypeError.new "Inputed Planet 2 should not be nil"
+    end
+    
     planet1 = find_planet_by_name(planet_1)
     planet2 = find_planet_by_name(planet_2)
 
