@@ -11,24 +11,19 @@ class SolarSystem
   end
   
   def list_planets
-    list = "Planets orbiting #{@star_name}"
-    @planets.each_with_index { |planet, index|
-      list += "\n#{index + 1}. #{planet.name}"
-    }
+    list = "\nPlanets orbiting #{@star_name}"
+    @planets.each_with_index { |planet, index| list += "\n#{index + 1}. #{planet.name}" }
     return list
   end
   
   def find_planet_by_name(string)
-    related_planets = @planets.find_all { |planet|
-      planet.name.downcase == string.downcase
-    }
-    return related_planets
+    return @planets.find { |planet| planet.name.downcase == string.downcase }
   end
   
   def distance_between(name_A, name_B)
-    planet_A = @planets.find_all {|planet| planet.name.downcase==name_A.downcase}
-    planet_B = @planets.find_all {|planet| planet.name.downcase==name_B.downcase}
+    planet_A = find_planet_by_name(name_A)
+    planet_B = find_planet_by_name(name_B)
     
-    return planet_A[0].distance_from_sun_km - planet_B[0].distance_from_sun_km
+    return planet_A.distance_from_sun_km - planet_B.distance_from_sun_km
   end
 end
