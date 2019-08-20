@@ -37,4 +37,16 @@ class SolarSystem
       return message
     end
   end
+  
+  def distance_between(first_planet, second_planet)
+    first_position = first_planet.distance_from_sun_km
+    second_position = second_planet.distance_from_sun_km
+    
+    if first_position > second_position
+      return first_position - second_position
+    else
+      return second_position - first_position
+    end
+  end
+  
 end
