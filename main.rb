@@ -10,8 +10,8 @@ def main
   solar_system.add_planet(earth)
   solar_system.add_planet(mercury)
 
-  controller = Controller.new(solar_system)
-  controller.control_loop
+  control = Controller.new(solar_system)
+  control.control_loop
 end
 
 main
