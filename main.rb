@@ -2,11 +2,8 @@ require_relative 'planet'
 require_relative 'solar_system'
 
 def main
-  task = "run"
-  
-  # Initial Planets
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life.')
-  venus = Planet.new('Venus', 'yellow and white', 177.7, 67.24, 'It is known as the morning star.')
+  venus = Planet.new('Venus', 'yellow and white', 4.86732e24, 6.7e7, 'It is known as the morning star.')
   
   
   our_solar_system = SolarSystem.new('Sun')
@@ -14,18 +11,22 @@ def main
   our_solar_system.add_planet(venus)
   
   
-  while task != "quit"
-    puts "What do you want to do next?"
+  while true
+    puts "\nWhat do you want to do next?"
     print "\'List\' planets in the solar system, \'learn\' about a planet, \'add\' a new planet, or \'quit\' the program? "
     task = gets.chomp.downcase
     if task == "list"
       print our_solar_system.list_of_planets
     elsif task == "learn"
-      print "What planet would you like to learn about? "
+      print "\nWhat planet would you like to learn about? "
       found_planet = our_solar_system.find_planet_by_name(gets.chomp.capitalize)
-      puts found_planet.summary
+      if found_planet == 'not found'
+        puts "That planet does not exist in this solar system."
+      else
+        puts found_planet.summary
+      end
     elsif task == "add"
-      puts "Tell me about your planet: "
+      puts "\nTell me about your planet: "
       print "What is it's name? "
       input1 = gets.chomp.downcase
       print "What color is it? "
@@ -40,36 +41,12 @@ def main
       planet = input1
       planet = Planet.new(input1.capitalize, input2, input3, input4, input5)
       our_solar_system.add_planet(planet)
+    elsif task == "quit"
+      break
+    else
+      puts "Invalid Entry: Please enter: \'list\', \'learn\', \'add\', or \'quit\' "
     end
   end
-  
-  
-  
-  # print "Create a new solar system:  What is the star? "
-  # star = gets.chomp.downcase
-  
-  # star = SolarSystem.new(star.capitalize)
-  
-  # puts "Add planets for your solar system: "
-  # star.add_planet(gets.chomp.downcase)
-  # puts "Add details for your planet: "
-  
-  
-  # puts "Do you want to quit? "
-  # enter_data = gets.chomp
-  # # earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life.')
-  
-  
-  # puts our_solar_system.list_of_planets
-  # puts
-  
-  # found_planet = our_solar_system.find_planet_by_name('Earth')
-  # puts "Found planet summary: "
-  # puts found_planet.summary
-  
-  
-  
-  
 end
 
 main

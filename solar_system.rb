@@ -9,14 +9,15 @@ class SolarSystem
   
   def add_planet(planet)
     @planets.push(planet)
+    return @planets
   end
   
   def list_of_planets()
     string = "Planets orbiting #{star_name}\n"
     
     @planets.each_with_index do |planet, number|
-      string2 = "#{number + 1}. #{planet.name} \n"
-      string.concat(string2)
+      temp_string = "#{number + 1}. #{planet.name} \n"
+      string.concat(temp_string)
     end
     
     return string
@@ -24,22 +25,13 @@ class SolarSystem
   end
   
   def find_planet_by_name(planet_name)
-    
-    found = 'not found'
-    # until found == planet_name
-    #   @planets.each do |planet|
-    #     found = planet.name
-    #   end  
-    # end
-    
+    found = 'not found'    
     @planets.each do |planet|
       if planet.name == planet_name
         found = planet
-        return found
       end  
     end
-    
+    return found
   end
-  
   
 end
