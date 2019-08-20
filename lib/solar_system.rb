@@ -21,4 +21,15 @@ class SolarSystem
     return array_of_strings.join
   end
   
+  def find_planet_by_name(planet_name)
+    @planets.each do |planet|
+      if planet_name.downcase == planet.name.downcase
+        return planet
+      end
+    end
+    
+    return "Sorry, there was no planet found by the name you entered."
+    
+  end
+  
 end
