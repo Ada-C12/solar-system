@@ -13,4 +13,21 @@ class SolarSystem
 
   def list_planets
     return "Planets orbiting #{star_name}
-    #{"
+    #{gen_list(@planets)}"
+  end
+
+
+  def gen_list(items_to_list)
+    count = 1
+    list = []
+    items_to_list.map! { |item| item.name}
+    items_to_list.each do |item|
+    list << "#{count}. #{item}"
+    count += 1
+    end
+    return list
+  end
+end
+
+
+
