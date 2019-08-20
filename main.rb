@@ -1,19 +1,18 @@
-require_relative "planet"
-require_relative "solar_system"
+require_relative "lib/planet"
+require_relative "lib/solar_system"
 
 def main
   our_solar_system = SolarSystem.new('Sol')
   
-  # adds planets to the solar system
   add_initial_planets(our_solar_system)
   
-  # asks user what actions they would like to perform
+  # asks user what action they would like to perform
   exit = false
   until exit == true
-    print "\nWhat would you like to do next (list planets, exit, planet details, add planet, find distance)? "
-    decision = gets.chomp
+    print "\nChoose from one of the following options (list planets, planet details, add planet, find distance, exit): "
+    user_decision = gets.chomp
     
-    case decision
+    case user_decision
     when "list planets"
       puts our_solar_system.list_planets
     when "exit"
@@ -30,6 +29,7 @@ def main
   end  
 end
 
+# adds initial planets to the solar system
 def add_initial_planets(solar_system)
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e16, 'Only planet known to support life')
   cyborg = Planet.new('Cyborg', 'neon green', 10.993e24,2.496e90, 'Humans have not yet discovered this planet' )
@@ -39,14 +39,20 @@ def add_initial_planets(solar_system)
   solar_system.add_planet(mars)
 end
 
+# finds planet summary
 def planet_details(solar_system)
-  print "What planet would you like to learn about? "
+  print "\nWhat planet would you like to learn about? "
   planet = gets.chomp
-  puts solar_system.find_planet_by_name(planet)[0].summary
+  while solar_system.find_planet_by_name(planet) == nil
+    print "Planet name is not valid. Planet name: "
+    planet = gets.chomp
+  end
+  puts solar_system.find_planet_by_name(planet).summary
 end
 
+# adds new planet to solar system
 def add_planet(solar_system)
-  print "Please enter the following details about your planet.\nPlanet name: "
+  print "\nPlease enter the following details about your planet.\nPlanet name: "
   name = gets.chomp
   print "Planet color: "
   color = gets.chomp
@@ -69,13 +75,21 @@ def add_planet(solar_system)
   solar_system.add_planet(new_planet)
 end
 
-# Adjust for errors if planet are not valid
+# finds the distance between two planets
 def distance_between_planets(solar_system)
-  print "Please enter the name of two planets.\nPlanet 1 name: "
+  print "\nPlease enter the name of two planets.\nPlanet 1 name: "
   planet_1 = gets.chomp
+  while solar_system.find_planet_by_name(planet_1) == nil
+    print "Planet name is not valid. Planet name: "
+    planet_1 = gets.chomp
+  end
   print "Planet 2 name: "
   planet_2 = gets.chomp
-  print "#{planet_1.capitalize} and #{planet_2.capitalize} are #{solar_system.distance_between(planet_1, planet_2)} km apart."
+  while solar_system.find_planet_by_name(planet_2) == nil
+    print "Planet name is not valid. Planet name: "
+    planet_2 = gets.chomp
+  end
+  print "\n#{planet_1.capitalize} and #{planet_2.capitalize} are #{solar_system.distance_between(planet_1, planet_2)} km apart.\n"
 end
 
 main
