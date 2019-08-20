@@ -8,7 +8,7 @@ class Planet
     @name = name
     @color = color
     @mass_kg = massChecker(mass_kg)
-    @distance_from_sun_km = distance_from_sun_km
+    @distance_from_sun_km = distance_from_sun_km.to_f
     @fun_fact = fun_fact
   end
 

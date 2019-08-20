@@ -1,4 +1,6 @@
 require_relative 'planet'
+require 'awesome_print'
+
 
 class SolarSystem
 
@@ -24,9 +26,30 @@ class SolarSystem
     return planets_string
   end
 
-  # def find_planet_by_name(planet)
-
-  # end
+  def find_planet_by_name(planet_to_find)
+    ap @planets
+    found_planet = @planets.find(ifnone = nil) {|planet| planet.name.capitalize == planet_to_find.capitalize}
+    return found_planet
+  end
 
 end
+
+
+  # def distance_between(planet_one, planet_two)
+  #   @planets.map do
+  #     if planet_one && planet_two
+  #       distance = (planet_one.distance_from_sun_km - planet_two.distance_from_sun_km).abs
+  #     else
+  #       puts "this didn't work"
+  #     end
+  #   return distance
+  #   end
+  # end
+
+  # def list_planets
+  #   list = @planets.each_with_index.map do |planet, i|
+  #     "#{i +1}. #{planet.name}"
+  #   end
+  #   return "Planets orbiting #{@star_name}: \n#{list.join("\n")}"
+  # end
 
