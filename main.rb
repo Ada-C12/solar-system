@@ -12,29 +12,25 @@ end
 
 def main
   untenable = SolarSystem.new("Untenable")
-  earth = Planet.new(name: "Earth", color: "blue-green", mass_kg: 5.972e24, distance_from_sun_km: 1.496e8, fun_fact: "Only planet known to support life")
-  venus = Planet.new(name: "Venus", color: "white", mass_kg: 4.867e24, distance_from_sun_km: 1.0826e8, fun_fact: "Venus is the only planet in the Solar System to be named after a female figure.")
+  poddo = Planet.new(name: "Poddo", color: "green", mass_kg: 5.972, distance_from_sun_km: 1.496e8, fun_fact: "This planet is actually a frozen pea")
+  normie = Planet.new(name: "Normie", color: "peach", mass_kg: 4.867e24, distance_from_sun_km: 1.0826e8, fun_fact: "Normie isn;t the life of the party at Untenable parties, but other planets generally like them.")
   exploder = Planet.new(name: "Exploder", color: "fire", mass_kg: 1.847e26, distance_from_sun_km: 1.0826e5, fun_fact: "Exploder is too close to the Sun. It is going to explode.")
-  untenable.add_planet(earth)
-  untenable.add_planet(venus)
+  untenable.add_planet(poddo)
+  untenable.add_planet(normie)
   untenable.add_planet(exploder)
 
   user_input = nil
   puts "Hey user, what do you want to do? 
-      'list' to list the planets, 
-      'details' to show planet information,
-      'add' to add another planet to the solar system (How wonderful to discover a new planet!)
-      'exit' to leave the program"
+    'list' to list the planets, 
+    'details' to show planet information,
+    'add' to add another planet to the solar system (How wonderful to discover a new planet!)
+    'distance' to determine the distance between two selected planets
+    'exit' to leave the program"
   user_input = gets.chomp.downcase
   until user_input == "exit"
     if user_input == "list"
       list = untenable.list_planets
       puts list
-      puts "What do you wanna do next? 
-      'list' to list the planets, 
-      'details' to show planet information,
-      'add' to add another planet to the solar system (How wonderful to discover a new planet!)
-      'exit' to leave the program"
     elsif user_input == "details"
       puts "Which planet do you want to learn more about?"
       puts untenable.list_planets
@@ -62,9 +58,18 @@ def main
       untenable.add_planet(user_planet)
       puts "Cool! Here's the summary of your planet!"
       puts user_planet.summary
+    elsif user_input == "distance"
+      distance = untenable.distance_between
+      puts "The two planets  are #{"%1e" % distance} km apart"
     else
       puts "INVALID INPUT. Please enter 'list' or 'exit'."
     end
+    puts "What do you wanna do next? 
+    'list' to list the planets, 
+    'details' to show planet information,
+    'add' to add another planet to the solar system (How wonderful to discover a new planet!)
+    'distance' to determine the distance between two selected planets
+    'exit' to leave the program"
     user_input = gets.chomp.downcase
   end
 end
