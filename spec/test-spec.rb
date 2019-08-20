@@ -52,13 +52,31 @@ describe "solar system project" do
     
     it "measures the distance between two planets" do
       solar_system = SolarSystem.new("Sol")
-      solar_system.planets << Planet.new("Krypton", "green", 66, 98765, "is made of Kryptonite")
-      solar_system.planets << Planet.new("Krippton", "purple", 55, 87654, "is populated by Krippaehnes")
+      krypton = Planet.new("Krypton", "green", 66, 98765, "is made of Kryptonite")
+      krippton = Planet.new("Krippton", "purple", 55, 87654, "is populated by Krippaehnes")
       
-      expect(solar_system.distance_between).must_equal 11111
+      solar_system.planets << krypton
+      solar_system.planets << krippton
+      
+      distance_between_krypton_and_krippton = solar_system.distance_between(krypton, krippton)
+      
+      expect(distance_between_krypton_and_krippton).must_equal 11111
       
     end
     
+    it "measures the distance between two planets entered in reverse order" do
+      solar_system = SolarSystem.new("Sol")
+      krypton = Planet.new("Krypton", "green", 66, 98765, "is made of Kryptonite")
+      krippton = Planet.new("Krippton", "purple", 55, 87654, "is populated by Krippaehnes")
+      
+      solar_system.planets << krypton
+      solar_system.planets << krippton
+      
+      distance_between_krippton_and_krypton = solar_system.distance_between(krippton, krypton)
+      
+      expect(distance_between_krippton_and_krypton).must_equal 11111
+      
+    end
     
   end
   
