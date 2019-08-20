@@ -1,3 +1,4 @@
+require 'pry'
 class SolarSystem
   attr_reader :star_name, :planets, :instance_of_planet_class
   
@@ -18,7 +19,7 @@ class SolarSystem
     # loop thru the planets list i times
     @planets.length.times do |i| 
       # increment counter and pull out each planet's name
-      output += "#{i+1}. #{@planets[i].name.capitalize}\n"
+      output += "#{i+1}. #{@planets[i].name}\n"
     end 
     return output 
   end 
@@ -26,19 +27,15 @@ class SolarSystem
   # create a method that takes the name of a planet as a string 
   # and returns the corresponding instance of Planet
   # look-up should be case insensitive 
-  def find_planet_by_name(planet)
-    # find a method that can take in a string and check if a corresponding
-    # planet.name exists in planets array
-    
-    
-    # return planet - corresponding instance 
-    
-    
-    
-  end 
-  
-  
-end 
+  def find_planet_by_name(check_planet)
+    @planets.each do |current_planet|
+      if current_planet.name.downcase == check_planet.downcase
+        return current_planet
+      end 
+    end
+    return nil
+  end
+end
 
 
 

@@ -22,13 +22,12 @@ def main
   list = solar_system.list_planets 
   puts list
   
-  found_planet = solar_system.find_planet_by_name('Earth')
+  found_planet = solar_system.find_planet_by_name("Earth") 
   puts found_planet
-  puts found_planet.summary
-  
-  
-  
-  
+  # if the planet string that is passed into find_planet_by_name doesn't exist, don't execute .summary method
+  if found_planet != nil 
+    puts found_planet.summary 
+  end
 end
 
 main
