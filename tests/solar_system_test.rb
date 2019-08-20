@@ -146,4 +146,57 @@ describe "SolarSystem class" do
         
     end
     
+    describe "distance_between method" do
+        it "Takes in 2 planets as arguments" do
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
+            earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
+            
+            star_name = "Sol"
+            solar_system = SolarSystem.new(star_name)
+            solar_system.add_planet(earth)
+            solar_system.add_planet(mars)
+            
+            venus = "Venus"
+            expect {solar_system.distance_between(earth, venus)}.must_raise ArgumentError
+        end
+        
+        it "Takes in existing 2 planets in a solar system as arguments" do
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
+            earth = Planet.new(name: 'Earth', color: "blue-green", mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
+            mercury = Planet.new(name: "Mercury", color: "dark-gray", mass_kg: 3.285e23 , distance: 0.5791e8 , fact: "A year on Mercury is just 88 days long")
+            star_name = "Sol"
+            solar_system = SolarSystem.new(star_name)
+            solar_system.add_planet(earth)
+            solar_system.add_planet(mars)
+            
+            expect {solar_system.distance_between(earth, mercury)}.must_raise ArgumentError
+        end
+        
+        it "Returns a number" do
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
+            earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
+            
+            star_name = "Sol"
+            solar_system = SolarSystem.new(star_name)
+            solar_system.add_planet(earth)
+            solar_system.add_planet(mars)
+            
+            distance_between_earth_and_mars = solar_system.distance_between(earth, mars)
+            expect (distance_between_earth_and_mars).must_be_instance_of Integer
+        end
+        
+        it "Returns the distance between 2 planets" do
+            mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
+            earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
+            
+            star_name = "Sol"
+            solar_system = SolarSystem.new(star_name)
+            solar_system.add_planet(earth)
+            solar_system.add_planet(mars)
+            
+            distance_between_earth_and_mars = solar_system.distance_between(earth, mars)
+            expect (distance_between_earth_and_mars).must_equal 78300000
+        end
+    end
+    
 end

@@ -28,4 +28,10 @@ class SolarSystem
         planet = (planets_by_name.empty?) ? nil : planets_by_name[0]
         return planet
     end
+    
+    def distance_between(first_planet, second_planet)
+        raise ArgumentError.new("Arguments must be an instance of Planet") if !(first_planet.instance_of? Planet) || !(second_planet.instance_of? Planet)
+        raise ArgumentError.new("Planet doesn't exist in this Solar System") if !(@planets.include? first_planet) || !(@planets.include? second_planet)
+        return (first_planet.distance_from_sun_km - second_planet.distance_from_sun_km).to_i.abs
+    end
 end
