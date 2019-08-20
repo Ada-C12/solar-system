@@ -39,6 +39,9 @@ def main
   puts "\nFound: #{found_planet}"
   puts found_planet.summary
   
+  distance_difference = solar_system.distance_between('Earth', 'Mars')
+  puts "\nThe distance between Earth and Mars is #{distance_difference} km (assuming they are aligned with one another)."
+  
 end
 
 main
