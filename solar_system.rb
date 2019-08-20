@@ -19,9 +19,10 @@ class SolarSystem
     "Planets orbiting #{star_name}"
     @planets.each do |planet|
       @planets_list.push("#{i}. #{planet.name}")
-      return planets_list
+
       i += 1
     end
+    return planets_list
   end
 
   def find_planet_by_name(planet_to_find)
