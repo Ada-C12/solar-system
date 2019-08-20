@@ -9,10 +9,10 @@ require_relative "../lib/planet.rb"
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Planet" do
-  # it "can create a new planet" do
-  #   mars = Planet.new("Mars", "red", 6.39e23, 227900000, "Known as the red planet due to its reddish appearance")
-  #   mars.class.must_equal Planet
-  # end
+  it "can create a new planet" do
+    mars = Planet.new("Mars", "red", 6.39e23, 227900000, "Known as the red planet due to its reddish appearance")
+    mars.class.must_equal Planet
+  end
 
   it "will print the summary of a planet" do
     planet = Planet.new("Earth", "blue-green", 5.972e24, 1496e8, "Only planet known to support life")
