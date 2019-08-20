@@ -45,7 +45,8 @@ describe "solar system" do
       solar_system.planets << Planet.new("Earth", "green", 22, 33, "is larger than a peanut")
       found_planet = solar_system.find_planet_by_name("earth")
       
-      expect(found_planet.length).must_equal 2
+      expect(found_planet[0..4]).must_match "earth"
+      expect(found_planet.reverse[0..4]).must_match ".tuna"
       
     end
     
