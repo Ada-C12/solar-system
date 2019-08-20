@@ -15,9 +15,9 @@ class SolarSystem
   end
   
   def list_planets
-    puts "Planets orbiting #{star_name}:"
-    puts "1. #{@planets[0]}"
-    puts "2. #{@planets[1]}"
+    return "Planets orbiting the star '#{star_name}':
+    1. #{@planets[0]}
+    2. #{@planets[1]}"
   end
   
   
