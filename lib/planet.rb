@@ -16,7 +16,6 @@ class Planet
     
     raise ArgumentError.new "Invalid planet color!" if @color.class != String 
     
-    
     raise ArgumentError.new "Invalid planet mass!" if (@mass_kg.class != Integer && @mass_kg.class != Float) || @mass_kg <= 0
     
     raise ArgumentError.new "Invalid distance!" if (@distance_from_sun_km.class != Integer && @distance_from_sun_km.class != Float) || @distance_from_sun_km <= 0
