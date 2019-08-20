@@ -1,10 +1,10 @@
 # Create a class called Planet - Each instance will keep track of information about a single planet
 class Planet
   # Add a constructor to your Planet class - take in 5 parameters which are details about planet
-  def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
+  def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)  
     @name = name
     @color = color
-    @mass_kg = mass_kg 
+    @mass_kg = mass_kg
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
   end

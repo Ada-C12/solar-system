@@ -28,9 +28,29 @@ class SolarSystem
 # takes the name of a planet as a string, and returns the corresponding instance of Planet
 # lookup should be case-insensitive, so that Earth, earth and eArTh all return the same planet
   def find_planet_by_name(planet)
+    if planet.class != String
+      raise TypeError.new "Planet should be string"
+    elsif planet == nil
+      raise TypeError.new "Planet should not be nil"
+    end
+   
     @planets.each do |planet_instance|
       return planet_instance if planet.upcase == planet_instance.name.upcase
     end
   end
+  
+  # distance_between takes two planet names as parameters and returns the distance between them
+  def distance_between(planet_1, planet_2)
+    planet1 = find_planet_by_name(planet_1)
+    planet2 = find_planet_by_name(planet_2)
+
+    planet_1_distance_sun = planet1.distance_from_sun_km
+    planet_2_distance_sun = planet2.distance_from_sun_km
+
+    distance_between = (planet_1_distance_sun - planet_2_distance_sun).abs
+    return distance_between
+  end
+
+
 
 end  
