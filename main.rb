@@ -13,7 +13,7 @@ def check_planet(planet_array)
       puts "#{index + 1}: #{planet.summary}"
     end
     
-    print "Please select a number: "
+    print "\nPlease select a number: "
     selection = gets.chomp.to_i - 1
     
     until selection >= 0 && selection < planet_array.length
@@ -34,16 +34,10 @@ end
 
 def get_distance_between(solar_system)
   first_planet = get_planet(solar_system)
-  
-  if first_planet.class == String
-    return first_planet
-  end
+  return first_planet if first_planet.is_a?(String)
   
   second_planet = get_planet(solar_system)
-  
-  if second_planet.class == String
-    return second_planet
-  end
+  return second_planet if second_planet.is_a?(String)
   
   distance = solar_system.distance_between(first_planet, second_planet)
   return "The distance between #{first_planet.name} and #{second_planet.name} is #{distance} km."
@@ -52,6 +46,11 @@ end
 def get_planet_details(solar_system)
   print "Which planet are you interested in? "    
   planet_name = gets.chomp.capitalize  
+  
+  while planet_name == ""
+    print "Please enter a planet: "
+    planet_name = gets.chomp.capitalize
+  end
   
   results = solar_system.find_planet_by_name(planet_name)
   
@@ -138,7 +137,6 @@ def main
   
   while play
     print "\nYour options are 'list planets', 'distance between', 'planet details', 'add planet', or 'exit': "
-    
     answer = gets.chomp.downcase
     
     case answer
