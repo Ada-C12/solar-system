@@ -9,7 +9,7 @@ def main
   solar_system = SolarSystem.new("Sun")
   solar_system.add_planet(earth)
   solar_system.add_planet(mars)
-  p solar_system
+  solar_system.list_planets
   
 end
 
