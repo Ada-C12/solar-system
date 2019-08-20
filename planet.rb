@@ -12,9 +12,14 @@ class Planet
     @fun_fact = fun_fact
   end
   
+  def name
+    return @name
+  end
+  
   def summary
     return "#{@name} is a #{@color} planet that is #{@distance} from the sun. Fun fact, #{@fun_fact}!"
   end
+  
   
 end  
 
