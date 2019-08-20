@@ -22,7 +22,6 @@ class SolarSystem
     planet_name.capitalize!
 
     search = @planets.find { |planet| planet.name == planet_name}
-
     return search
   end
   
