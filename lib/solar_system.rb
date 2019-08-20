@@ -21,4 +21,11 @@ class SolarSystem
         end
         return planets_list
     end
+    
+    def find_planet_by_name(planet_name)
+        raise ArgumentError.new("Planet name must be a string") if !(planet_name.instance_of? String)
+        planets_by_name = @planets.select {|obj| obj.name == planet_name.capitalize}
+        planet = (planets_by_name.empty?) ? nil : planets_by_name[0]
+        return planet
+    end
 end
