@@ -40,24 +40,24 @@ describe "Planet" do
   
 end
 
-describe "SolarSystem" do
-  before do 
-    @solar_system = SolarSystem.new('Sol')
-    @earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+# describe "SolarSystem" do
+#   before do 
+#     @solar_system = SolarSystem.new('Sol')
+#     @earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
     
-    @solar_system.add_planet(@earth)
+#     @solar_system.add_planet(@earth)
     
-    @mars = Planet.new('Mars', 'brownish-red', 6.4171e23, 2.2794e8, 'The second smallest planet in the solar system behind Mercury')
+#     @mars = Planet.new('Mars', 'brownish-red', 6.4171e23, 2.2794e8, 'The second smallest planet in the solar system behind Mercury')
     
-    @solar_system.add_planet(@mars)
+#     @solar_system.add_planet(@mars)
     
     
-  end
+#   end
   
-  describe "add planet" do
-    it "must add valid planet to planets array" do
-      expect{@solar_system.add_planet('planet')}.must_raise ArgumentError
-    end
+#   describe "add planet" do
+#     it "must add valid planet to planets array" do
+#       expect{@solar_system.add_planet('planet')}.must_raise ArgumentError
+#     end
     
-  end
-end
+#   end
+# end
