@@ -8,19 +8,28 @@ class SolarSystem
   end
   
   def add_planet(planet)
-    @planets.push(planet.name)
+    @planets.push(planet)
     
   end
   
   def list_planets
     intro =  "Planets Orbiting #{@star_name}: \n"
     count = 1
-    @planets.each do |x|
-      intro += "#{count}. #{x}\n"
+    @planets.each do |planet|
+      intro += "#{count}. #{planet.name}\n"
+      count += 1
     end
     
     return intro
   end
   
-  
+  def find_planet_by_name(planet)
+    @planets.each do |planet_name|
+      if planet_name.name == planet
+        return planet_name.summary
+      end
+    end
+    return "No Information Found"
+  end
 end
+
