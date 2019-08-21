@@ -12,9 +12,11 @@ class SolarSystem
   
   def list_planets
     string = "Planets orbiting #{star_name}\n"
+    
     @planets.each_with_index do |item, k|
       string << "#{k + 1}. #{item.name}\n"
     end
+    
     return string
   end
   
@@ -32,7 +34,11 @@ class SolarSystem
     end
   end
   
-  def distance_between(pla_1, pla_2)
-    return (pla_1.distance_from_sun_km - pla_2.distance_from_sun_km).abs
+  # two planet names as parameters and returns the distance between them
+  def distance_between(planet_1, planet_2)
+    planet_1 = find_planet_by_name(planet_1)
+    planet_2 = find_planet_by_name(planet_2)
+    
+    return (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs
   end
 end
