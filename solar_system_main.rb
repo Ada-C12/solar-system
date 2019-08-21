@@ -7,10 +7,10 @@ def main
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'It\'s the only planet known to support life.')
 
   solar_system.add_planet(earth)
-  list = solar_system.list_planets
-  puts list
 
-  p solar_system.find_planet_by_name(earth)
+  list = solar_system.list_planets
+
+  puts solar_system.planets
 end
 
 main
