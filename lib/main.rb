@@ -79,14 +79,11 @@ def main
   uranus = Planet.new('Uranus', 'blue', 8.681e25, 2.871e9, 'It takes 84 earth-years for Uranus to travel around the sun')
   neptune = Planet.new('Neptune', 'bright blue', 1.024e26, 4.495e9, 'The coldest planet in the solar system')
   
-  solar_system.add_planet(mercury)
-  solar_system.add_planet(venus)
-  solar_system.add_planet(earth)
-  solar_system.add_planet(mars)
-  solar_system.add_planet(jupiter)
-  solar_system.add_planet(saturn)
-  solar_system.add_planet(uranus)
-  solar_system.add_planet(neptune)
+  planets_list = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
+  
+  planets_list.each do |planet|
+    solar_system.add_planet(planet)
+  end
   
   user_input = ""
   valid_inputs = ["list planets", "planet details", "add planet", "distance between", "exit"]
@@ -115,13 +112,17 @@ def main
         print "What is this planet's #{category}? "
         planet_information << gets.chomp
       end
+      until !planet_information[1].numeric?
+        print "\nError! You entered a number as the planet's color. Please enter a color: "
+        planet_information[1] = gets.chomp
+      end
       until planet_information[2].numeric? && planet_information[2].to_f > 0
-        print "\nError! You entereed an invalid mass. Please enter the mass as the number of kg: "
+        print "\nError! You entered an invalid mass. Please enter the mass as the number of kg: "
         planet_information[2] = gets.chomp
       end
       planet_information[2] = planet_information[2].to_f
       until planet_information[3].numeric? && planet_information[3].to_f > 0
-        print "\nError! You entereed an invalid distance. Please enter the distance as the number of km: "
+        print "\nError! You entered an invalid distance. Please enter the distance as the number of km: "
         planet_information[3] = gets.chomp
       end
       planet_information[3] = planet_information[3].to_f
