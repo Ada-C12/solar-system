@@ -37,7 +37,7 @@ def main
 
   user_input = ""
 
-  until user_input.casecmp? "exit"
+  until user_input == "exit"
     puts "\nWhat would you like to do:
     -enter 'list' to list all the planets
     -enter 'details' to display a planet's details
@@ -45,12 +45,12 @@ def main
     -enter 'distance' to calculate the distance between two planets
     -enter 'exit' to exit the program"
 
-    user_input = gets.chomp
+    user_input = gets.chomp.downcase
     case user_input
     when "list"
       puts "\n#{solar_system.list_planets}"
     when "details"
-      print "Please enter planet would you like to know more about: "
+      print "Please enter the name of the planet you would like to know more about: "
       users_planet = gets.chomp
       solar_system.find_planet_by_name(users_planet).each do |planet|
         puts "\n#{planet.summary}"
@@ -64,11 +64,11 @@ def main
       print "Enter planet two's name: "
       planet_two = gets.chomp
 
-      puts "#{solar.system(planet_one, planet_two)}"
+      puts "\n#{planet_one} is #{solar_system.distance_between(planet_one, planet_two)} km away from #{planet_two}"
     when "exit"
       return
     else
-      puts "/nInvalid command. Please try again!"
+      puts "\nInvalid command. Please try again!"
     end
   end
   # Wave 1 and 2 Code
