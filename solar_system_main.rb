@@ -33,7 +33,12 @@ def main
     planet_sought = gets.chomp
     puts solar_system.produce_planet_details(planet_sought)
   when "C"
-    solar_system.add_planet(collect_planet_details)
+    begin
+      solar_system.add_planet(collect_planet_details)
+    rescue ArgumentError => exception
+      puts exception
+    end
+
   when "D"
     puts "You are now leaving the Solar System!"
     exit
