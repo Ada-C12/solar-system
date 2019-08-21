@@ -7,6 +7,12 @@ class Planet
     @mass_kg = mass_kg
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
+    if mass_kg <= 0
+      raise ArgumentError.new "Invalid number for mass."
+    end
+    if distance_from_sun_km <= 0
+      raise ArgumentError.new "Invalid distance from star."
+    end
   end
 
   def summary

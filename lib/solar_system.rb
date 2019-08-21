@@ -1,8 +1,8 @@
 require_relative "planet"
 
 class SolarSystem
-  attr_reader :star_name, :planets, :planet
-  attr_reader :planets_list, :planets_list_formatted, :planet_to_find
+  attr_reader :planets_list, :planets_list_formatted, :star_name, :planets, :planet, :first_planet, :second_planet
+  attr_accessor :planet_to_find, :first_planet, :second_planet
 
   def initialize(star_name)
     @star_name = star_name
@@ -31,6 +31,11 @@ class SolarSystem
         return planet
       end
     end
-    return nil
+    return nil_planet = Planet.new(name: "", color: "", mass_kg: 1, distance_from_sun_km: 1, fun_fact: "")
+  end
+
+  def distance_between(first_planet_select, second_planet_select)
+    distance = (first_planet_select.distance_from_sun_km - second_planet_select.distance_from_sun_km).abs
+    return distance
   end
 end

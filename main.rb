@@ -59,7 +59,26 @@ def main
       puts "Cool! Here's the summary of your planet!"
       puts user_planet.summary
     elsif user_input == "distance"
-      distance = untenable.distance_between
+      puts "What is the name of the first of the two planets you would like to find the distance between?"
+      first_planet = gets.chomp.downcase
+      first_planet_select = untenable.find_planet_by_name(first_planet)
+
+      while first_planet_select.name.downcase != first_planet
+        puts "That planet is not in this solar system. Please try again."
+        first_planet = gets.chomp.downcase
+        first_planet_select = untenable.find_planet_by_name(first_planet)
+      end
+
+      puts "What is the name of the second planet"
+      second_planet = gets.chomp.downcase
+      second_planet_select = untenable.find_planet_by_name(second_planet)
+      while second_planet_select.name.downcase != second_planet
+        puts "That planet is not in this solar system. Please try again."
+        second_planet = gets.chomp.downcase
+        second_planet_select = untenable.find_planet_by_name(second_planet)
+      end
+
+      distance = untenable.distance_between(first_planet_select, second_planet_select)
       puts "The two planets  are #{"%1e" % distance} km apart"
     else
       puts "INVALID INPUT. Please enter 'list' or 'exit'."
