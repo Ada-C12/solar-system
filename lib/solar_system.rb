@@ -9,10 +9,18 @@ class SolarSystem
   def add_planet(planet)
     @planets << planet
   end
+
+  def has_planets
+    if @planets.length == 0
+      return false
+    else
+      return true
+    end
+  end
   
   def list_planets
-    if @planets.length == 0
-      return "There are no planets listed as orbiting the star #{star_name.capitalize} in this solar system."
+    if !has_planets
+      return ("There are no planets listed as orbiting the star #{star_name.capitalize} in this solar system.").colorize(:red)
     else
       planet_list = @planets.map.with_index do |planet, index|
         "#{index + 1}. #{planet.name}"

@@ -1,6 +1,8 @@
 require_relative "planet"
 require_relative "solar_system"
 
+require "colorize"
+
 def main
   puts "Welcome to the Solar System Program"
   print "What is the name of the star in your solar system? "
@@ -23,7 +25,6 @@ def main
     new_planet = Planet.new(name, color, mass_kg, distance_from_sun_km, fun_fact)
 
     return new_planet
-    
   end
   
   input_option = nil
@@ -34,21 +35,26 @@ def main
     
     if input_option == "add planet"
       solar_system.add_planet(create_new_planet)
-      puts "This planet has been added to the solar system."
+      puts ("This planet has been added to the solar system.").colorize(:green)
     elsif input_option == "list planets"
       list = solar_system.list_planets
       puts list
     elsif input_option == "planet details"
-      begin
-        print "Which planet do you want details about? "
-        input_found_planet = gets.chomp.downcase
-        found_planet = solar_system.find_planet_by_name(input_found_planet)
-      rescue ArgumentError => exception
-        puts exception.message
-        retry
+      if !solar_system.has_planets
+        puts ("No planets have been added yet.").colorize(:red)
+      else 
+        begin
+          print "Which planet do you want details about? "
+          input_found_planet = gets.chomp.downcase
+          found_planet = solar_system.find_planet_by_name(input_found_planet)
+        rescue ArgumentError => exception
+          puts (exception.message).colorize(:red)
+          retry
+        end
+
+        puts found_planet.summary
       end
 
-      puts found_planet.summary
     elsif input_option != "exit"
       puts "That input_option does not exist."
     end
