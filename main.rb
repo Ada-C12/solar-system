@@ -1,9 +1,8 @@
 require_relative 'planet'
 require_relative 'solar_system'
 
-
 def main
-  fun_stars = "****************************"
+  fun_stars = "****************************\n"
   puts "We are going to take a look at a solar system."
   
   solar_system = SolarSystem.new('Sun')
@@ -12,37 +11,37 @@ def main
   solar_system.add_planet(earth)
   solar_system.add_planet(pluto)
   
-  
   done = nil
   until done 
-    puts "List planets? \n enter (y) to list planets \n enter (exit) to exit the program "
+    puts "Want to list the planets orbiting the ** #{ solar_system.star_name } ** ? \n enter (y) to list planets \n enter (n) to continue"
     list_choice = gets.chomp.downcase
     if list_choice == "y"
-      puts fun_stars
-      puts solar_system.list_planets
-      puts fun_stars
+      
+      puts fun_stars + solar_system.list_planets + fun_stars
+      
       done = nil
-    elsif list_choice == "exit"
-      puts "Thanks for spending time with me in the solar system."
+    elsif list_choice == "n"
       done = true
     end
     
     done = nil
+    
     until done
-      puts "Which planet do you want to learn about? or Exit?"
+      puts "Which planet do you want to learn about? \n enter (planet name) to list information about a planet \n enter (n) to continue"
       which_planet_choice = gets.chomp.downcase
-      if which_planet_choice != "exit"
+      if which_planet_choice != "n"
         found_planet = solar_system.find_planet_by_name(which_planet_choice)
-        puts fun_stars
-        puts found_planet.summary
-      elsif which_planet_choice == "exit"
-        puts "Thanks for asking for planet info."
+        puts fun_stars + found_planet.summary + fun_stars
+      elsif which_planet_choice == "n"
         done = true  
       end  
     end  
+    
     done = nil
+    
     until done
-      puts "Would you like to add a planet? y/n"
+      puts fun_stars
+      puts "Would you like to add a planet to orbit the ** #{ solar_system.star_name } ** ? \n enter (y) to add a planet \n enter (n) to continue"
       add_planet_choice = gets.chomp.downcase
       if add_planet_choice == "n"
         done = true
@@ -53,16 +52,19 @@ def main
           characteristics[i] = gets.chomp
         end
         new_planet = Planet.new(characteristics[0], characteristics[1], characteristics[2], characteristics[3], characteristics[4])
-        p new_planet 
         solar_system.add_planet(new_planet)
         done = true
       end
     end
-    puts "Would you like to list the planets in the solar system again?"
+    
+    puts fun_stars
+    puts "Would you like to list the planets in the solar system again?? \n enter (y) to access information about the solar system \n enter (n) to exit the program "
     final_answer = gets.chomp
-    if final_answer.downcase == "yes"
+    if final_answer.downcase == "y"
       done = nil
     else
+      
+      puts fun_stars + "It was a pleasure spending time with you in this far-far away land."
       done = true
     end
   end
