@@ -36,7 +36,13 @@ class SolarSystem
     planet_1 = find_planet_by_name(planet_name_1)
     planet_2 = find_planet_by_name(planet_name_2)
     
-    return (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs
+    result = (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs rescue nil
+    
+    if result == nil
+      return "Sorry, one of the planet names you entered was invalid. Please try again."
+    else
+      return result
+    end
     
   end
   
