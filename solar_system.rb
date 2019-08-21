@@ -13,7 +13,7 @@ class SolarSystem
   
   def list_planets
     place = @planets.map.with_index do |planet, index|
-      "#{index + 1}. #{planet.name.capitalize}"
+      "#{ index + 1 }. #{planet.name.capitalize}"
     end
     return place
   end
@@ -26,10 +26,5 @@ class SolarSystem
       end
     end
   end
-  
-  
-  
-  
-  
   
 end

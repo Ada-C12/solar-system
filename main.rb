@@ -3,8 +3,10 @@ require_relative 'solar_system'
 
 def main # Creates solar system and populates it
   
+  # These loop options will be used later in the method to list for the user what they can do
   loop_options = ["list planets", "planet details", "add planet", "exit"]
   
+  # Create and populate a solar system with 2 planets
   solar_system_1 = SolarSystem.new("Red Dwarf")
   
   planet_1 = Planet.new(name: "Din", color: "Pink", mass_kg: 237923789, distance_from_sun_km: 3278997897823575978987, fun_fact: "It's made out of cotton candy")
@@ -15,11 +17,8 @@ def main # Creates solar system and populates it
   
   solar_system_1.add_planet(planet_2)
   
-  puts "What would you like to do next?"
-  loop_options.each do |option|
-    puts "\t #{option}"
-  end
-  
+  # method that calls "find_planet_by_name" method from solar_system.rb
+  # placed here because it needs to access to previously entered information
   def planet_details
     print "Enter the name of the planet you want to search for: "
     planet_search_term = gets.chomp.upcase
@@ -27,6 +26,8 @@ def main # Creates solar system and populates it
     return return_statement
   end
   
+  # method that manually enters planets into the previously established solar_system 
+  # placed here because it needs to access to previously entered information
   def add_planet_manually
     print "What is the name of the planet you want to enter: "
     name_manual = gets.chomp
@@ -45,17 +46,28 @@ def main # Creates solar system and populates it
     
   end
   
+  # Asks user what to pursue next using the options from LN 6
+  # Calls secondary methods depending on the user input
+  puts "What would you like to do next?"
+  loop_options.each do |option|
+    puts "\t #{option}"
+  end
   eval = gets.chomp.downcase
+  
+  # Creates a loop that traps the user until they enter "exit" 
+  # The user can enter multiple planets manually
+  # The planets previously entered by the user are available in subsequent loops 
   until eval == "exit" do
-    if eval == "list planets"
+    case eval
+    when "list planets"
       solar_system_1.list_planets.each do |line|
         puts line
       end
       eval = nil
-    elsif eval == "planet details"
+    when "planet details"
       puts solar_system_1.planet_details
       eval = nil
-    elsif eval == "add planet"
+    when "add planet"
       solar_system_1.add_planet(add_planet_manually)
       solar_system_1.list_planets.each do |line|
         puts line

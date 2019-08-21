@@ -16,7 +16,7 @@ class Planet
   
   # writes summary
   def summary
-    return "Let's learn about #{@name.capitalize}. It is #{@color}, it has a mass of #{@mass_kg} kg, and it orbits #{@distance_from_sun_km} kilometers from the sun. Fun fact: #{@fun_fact}. "
+    return "Let's learn about #{@name.capitalize}. It is #{@color}, it has a mass of #{@mass_kg} kg, and it orbits #{@distance_from_sun_km} kilometers from the sun. Fun fact: #{@fun_fact}. \n"
   end
   
 end
