@@ -11,17 +11,14 @@ class SolarSystem
   end
 
   def list_planets
-    list_planets = "Planets orbiting <#{@star_name}>: "
-    @planets.each_with_index do |planet, index|
-    puts "#{index + 1}: #{planet}"
+    puts "Planets orbiting <#{@star_name}>: "
+   
+    return @planets.each_with_index do |planet, index|
+    puts "#{index + 1}: #{planet.name}"
     end
-    
-    return list_planets
   end
 
   def find_planet_by_name(planet_name)
-    return @planets.find { |planet| planet.name.downcase == planet_name.downcase }
-     
+    return @planets.find { |planet| planet.name.downcase == planet_name.downcase }  
   end
-
 end
