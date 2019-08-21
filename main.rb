@@ -5,9 +5,9 @@ decision = ()
 
 def main
   
-  earth = Planet.new("Earth","mostly blue with white clouds", 5.97e24, 1.496e8, "It has bees")
-  mars = Planet.new("Mars", "rusty butterscotch", 10e23, 227883110.4, "It does not have bees")
-  venus = Planet.new("Venus", "pale yellow", 10e24, 108.2, "Has a bee-free environment")
+  earth = Planet.new("Earth","mostly blue with white clouds", "5.97e24", "1.496e8", "It has bees")
+  mars = Planet.new("Mars", "rusty butterscotch", "10e23", "227883110.4", "It does not have bees")
+  venus = Planet.new("Venus", "pale yellow", "10e24", "108.2", "Has a bee-free environment")
   
   solar_system = SolarSystem.new("Sun")
   solar_system.add_planet(earth)
@@ -43,8 +43,8 @@ def main
         new_planet << category_info
       end
       
-      trash_garbage = Planet.new(*new_planet)
-      solar_system.add_planet(trash_garbage)
+      user_planet = Planet.new(*new_planet)
+      solar_system.add_planet(user_planet)
       
       
       puts "Enter '1' to list planet names, '2' to see planet details, '3' to enter a new planet, or '4' to exit."
