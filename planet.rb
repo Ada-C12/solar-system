@@ -11,7 +11,7 @@ class Planet
   end
 
   def summary
-    return "The glorious planet #{@name} is #{@color}-colored and has a mass of #{@mass_kg} kilograms. It is #{@distance_from_sun_km} kilometers from the sun. And wouldn't you like to know a fun fact about #{@name}? #{@fun_fact}"
+    return "\nThe glorious planet #{@name} is #{@color}-colored and has a mass of #{@mass_kg} kilograms. It is #{@distance_from_sun_km} kilometers from the sun. And wouldn't you like to know a fun fact about #{@name}? #{@fun_fact}"
   end
 
   def check_number_validity(num, measure)

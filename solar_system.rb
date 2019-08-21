@@ -11,7 +11,7 @@ class SolarSystem
   end
 
   def list_planets
-    return "Planets orbiting #{star_name}: \n#{gen_list(@planets).join( )}"
+    return "\nPlanets orbiting #{star_name}: \n#{gen_list(@planets).join( )}"
   end
 
   def gen_list(items_to_list)
@@ -25,7 +25,6 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_sought)
-    # DO .UNIQ on name to get rid of duplicates?
     @planets.each do |test_against|
       if test_against.name.downcase == planet_sought.downcase
         return test_against
@@ -34,7 +33,7 @@ class SolarSystem
   end
 
   def produce_planet_details
-    print "Which planet are you curious about? "
+    print "\nWhich planet are you curious about? "
     planet_sought = gets.chomp
     found_planet = find_planet_by_name(planet_sought)
     while found_planet.class == Array
@@ -47,7 +46,7 @@ class SolarSystem
   end
 
   def collect_planet_details
-    print "What is your planet's name? "
+    print "\nWhat is your planet's name? "
     planet = gets.chomp
     print "What color is #{planet}? "
     color = gets.chomp
@@ -61,5 +60,4 @@ class SolarSystem
     puts "Summary of the latest planet added to our solar system: #{added_planet.summary}"
     return added_planet
   end
-
 end

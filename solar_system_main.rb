@@ -16,6 +16,7 @@ def main
   mercury = Planet.new('Mercury', 'grey', 3.3e23, 57.9e8, 'Its orbital period around the sun is the shortest of all the planets in the solar system.')
   solar_system.add_planet(mercury)
 
+
   print "\nHello! Welcome to the Solar System! Would you like to (A)-List Planets (B)-Read Planet Details (C)-Add a Planet or (D)-Exit: "
   choice = gets.chomp.upcase
 
@@ -23,24 +24,42 @@ def main
     print "Invalid input. Please enter 'A', 'B', 'C' or 'D': "
     choice = gets.chomp.upcase
   end
-# To loop, had originally called 'main' at the end of every 'when' block. I thought that was pretty clever, but the problem was that it was making a new solar system with each loop, so added planets disappeared.
+
   case choice
   when "A"
     puts solar_system.list_planets
-    main
   when "B"
     puts solar_system.produce_planet_details
-    main
   when "C"
     new_planet = solar_system.collect_planet_details
-    puts new_planet
     solar_system.add_planet(new_planet)
-    p solar_system
-    main
   when "D"
     puts "You are now leaving the Solar System!"
     exit
-  else
+  end
+
+  until choice == 'D'
+    print "\nNow would you like to (A)-List Planets (B)-Read Planet Details (C)-Add a Planet or (D)-Exit: "
+    choice = gets.chomp.upcase
+
+    until ['A', 'B', 'C', 'D'].include?(choice)
+      print "Invalid input. Please enter 'A', 'B', 'C' or 'D': "
+      choice = gets.chomp.upcase
+    end
+
+    case choice
+    when "A"
+      puts solar_system.list_planets
+    when "B"
+      puts solar_system.produce_planet_details
+    when "C"
+      new_planet = solar_system.collect_planet_details
+      puts new_planet
+      solar_system.add_planet(new_planet)
+    when "D"
+      puts "You are now leaving the Solar System!"
+      exit
+    end
   end
 end
 
