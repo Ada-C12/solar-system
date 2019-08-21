@@ -1,7 +1,6 @@
+require "colorize"
 require_relative "planet"
 require_relative "solar_system"
-
-require "colorize"
 
 def main
   puts "Welcome to the Solar System Program"
