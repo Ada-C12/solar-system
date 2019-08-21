@@ -40,8 +40,8 @@
 #   puts list
 
 #   found_planet = solar_system.find_planet_by_name('Earth')
-#   puts "\nFound: #{found_planet}"
-#   puts found_planet.summary
+#   puts "\n#{found_planet}"
+#   puts found_planet.summary rescue nil
 
 #   distance_difference = solar_system.distance_between('Earth', 'Mars')
 #   puts "\nThe distance between Earth and Mars is #{distance_difference} km (assuming they are aligned with one another)."
@@ -66,6 +66,22 @@ class String
   end
 end
 
+def shouldnt_be_a_number_error(string_input, correct_input_type)
+  until !string_input.numeric?
+    print "\nError! You entered a number as the planet's #{correct_input_type}. Please enter a #{correct_input_type}: "
+    string_input = gets.chomp
+  end
+  return string_input
+end
+
+def must_be_a_positive_number_error(string_input, correct_input_type, units)
+  until string_input.numeric? && string_input.to_f > 0
+    print "\nError! You entered an invalid #{correct_input_type}. Please enter the #{correct_input_type} as the number of #{units}: "
+    string_input = gets.chomp
+  end
+  return string_input.to_f
+end
+
 def main
   
   solar_system = SolarSystem.new("Sol")
@@ -87,7 +103,9 @@ def main
   
   user_input = ""
   valid_inputs = ["list planets", "planet details", "add planet", "distance between", "exit"]
+  
   until user_input.downcase == "exit"
+    
     puts "\nPlease choose an option: \n1) List Planets \n2) Planet Details \n3) Add Planet \n4) Distance Between \n5) Exit"
     user_input = gets.chomp
     
@@ -98,54 +116,52 @@ def main
     
     if user_input.downcase == "list planets"
       puts solar_system.list_planets
+      
     elsif user_input.downcase == "planet details"
       print "Great! Please enter a planet name to see its details: "
-      chosen_planet = gets.chomp
-      chosen_planet = solar_system.find_planet_by_name(chosen_planet)
-      puts "\n#{chosen_planet}"
-      puts chosen_planet.summary rescue nil
+      found_planet = solar_system.find_planet_by_name(gets.chomp)
+      puts "\n#{found_planet}"
+      puts found_planet.summary rescue nil
+      
     elsif user_input.downcase == "add planet"
       puts "Awesome! Let's add a planet. Please provide details about the planet you'd like to add."
+      
       planet_information_categories = ["name", "color", "mass in kg", "distance from the sun in km", "fun fact"]
       planet_information = []
       planet_information_categories.each do |category|
         print "What is this planet's #{category}? "
         planet_information << gets.chomp
       end
-      until !planet_information[1].numeric?
-        print "\nError! You entered a number as the planet's color. Please enter a color: "
-        planet_information[1] = gets.chomp
-      end
-      until planet_information[2].numeric? && planet_information[2].to_f > 0
-        print "\nError! You entered an invalid mass. Please enter the mass as the number of kg: "
-        planet_information[2] = gets.chomp
-      end
-      planet_information[2] = planet_information[2].to_f
-      until planet_information[3].numeric? && planet_information[3].to_f > 0
-        print "\nError! You entered an invalid distance. Please enter the distance as the number of km: "
-        planet_information[3] = gets.chomp
-      end
-      planet_information[3] = planet_information[3].to_f
+      
+      planet_information[0] = shouldnt_be_a_number_error(planet_information[0], "name")
+      planet_information[1] = shouldnt_be_a_number_error(planet_information[1], "color")
+      planet_information[2] = must_be_a_positive_number_error(planet_information[2], "mass", "kg")
+      planet_information[3] = must_be_a_positive_number_error(planet_information[3], "distance", "km")
+      planet_information[4] = shouldnt_be_a_number_error(planet_information[4], "fun fact")
+      
       added_planet = Planet.new(*planet_information)
       solar_system.add_planet(added_planet)
+      
     elsif user_input.downcase == "distance between"
       puts "Okay! Let's find the distance between two planets. Please pick two planets."
+      
       print "What's the first planet? "
       planet_1 = gets.chomp
       print "\nWhat's the second planet? "
       planet_2 = gets.chomp
+      
       answer = solar_system.distance_between(planet_1, planet_2)
       if answer.to_s.numeric?
-        puts "The distance between #{planet_1} and #{planet_2} is #{answer} km."
+        puts "The distance between #{planet_1} and #{planet_2} is #{answer} km (assuming they are aligned with one another)."
       else
         puts answer
       end
+      
     else
       exit
     end
+    
   end
-  
-  
   
 end
 
