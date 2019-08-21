@@ -7,10 +7,6 @@ class SolarSystem
         @planets = []
     end
     
-    # Create a method `SolarSystem#add_planet`,
-    #  which will take an instance of `Planet` 
-    #  as a parameter and add it to the list of planets.
-    
     def add_planet(planet_name)
         @planets.push(planet_name)
     end

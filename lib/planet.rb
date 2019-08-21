@@ -15,7 +15,7 @@ class Planet
     end 
 
     def summary
-        return "#{@planet_name.upcase}: is #{@color} it has a mass of #{@mass_kg}kg, 
+        return "#{@planet_name.downcase}: is #{@color} it has a mass of #{@mass_kg}kg, 
         it is #{@distance_from_sun}km from the sun. Here is a fun fact: #{@fun_fact}!"
     end
 end
