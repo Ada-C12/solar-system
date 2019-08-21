@@ -1,6 +1,6 @@
-######################################################
-#~~~~~~~~~~~~~~~~~~~ WAVES 1 & 2 ~~~~~~~~~~~~~~~~~~~~#
-######################################################
+# #####################################################
+# ~~~~~~~~~~~~~~~~~~~ WAVES 1 & 2 ~~~~~~~~~~~~~~~~~~~~#
+# #####################################################
 
 # require_relative "planet"
 # require_relative "solar_system"
@@ -18,29 +18,17 @@
 #   uranus = Planet.new('Uranus', 'blue', 8.681e25, 2.871e9, 'It takes 84 earth-years for Uranus to travel around the sun')
 #   neptune = Planet.new('Neptune', 'bright blue', 1.024e26, 4.495e9, 'The coldest planet in the solar system')
 
-#   puts mercury.summary
-#   puts venus.summary
-#   puts earth.summary
-#   puts mars.summary
-#   puts jupiter.summary
-#   puts saturn.summary
-#   puts uranus.summary
-#   puts neptune.summary
+#   planets_list = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
 
-#   solar_system.add_planet(mercury)
-#   solar_system.add_planet(venus)
-#   solar_system.add_planet(earth)
-#   solar_system.add_planet(mars)
-#   solar_system.add_planet(jupiter)
-#   solar_system.add_planet(saturn)
-#   solar_system.add_planet(uranus)
-#   solar_system.add_planet(neptune)
+#   planets_list.each do |planet|
+#     solar_system.add_planet(planet)
+#     puts planet.summary
+#   end
 
-#   list = solar_system.list_planets
-#   puts list
+#   puts solar_system.list_planets
 
 #   found_planet = solar_system.find_planet_by_name('Earth')
-#   puts "\n#{found_planet}"
+#   puts "\nFound: #{found_planet}"
 #   puts found_planet.summary rescue nil
 
 #   distance_difference = solar_system.distance_between('Earth', 'Mars')
