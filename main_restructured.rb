@@ -1,7 +1,10 @@
 require_relative 'lib/planet'
 require_relative 'lib/solar_system'
 
-def add_new_planet(planet_name)
+def add_new_planet(sun)
+  puts "Great. You want to add a planet. We need some details."
+  print "What is your planet's name? >"
+  planet_name = gets.chomp 
   name = planet_name.capitalize
   print "What is the color(s) of #{planet_name}? >"
   colors = gets.chomp 
@@ -11,7 +14,23 @@ def add_new_planet(planet_name)
   distance = gets.chomp.to_i
   print "What is a fun fact about #{planet_name}? >"
   fun_fact = gets.chomp
-  return  Planet.new(name, colors, mass, distance, fun_fact)
+  user_planet = Planet.new(name, colors, mass, distance, fun_fact)
+  sun.add_planet(user_planet) 
+  puts "Thanks for your help! Here's our updated list:"
+  puts sun.list_planets
+end
+
+def planet_details(sun)
+  # print "Planets orbiting #{sun.star_name}\n"
+  # puts sun.list_planets
+  puts "What planet do you want to learn about?"
+  planet_choice = gets.chomp.capitalize.strip
+  planet_display = sun.find_planet_by_name(planet_choice)
+  if planet_display == nil 
+    puts "That planet is not in #{sun.star_name}. Please add this planet if you would like to do so."
+  else
+    puts planet_display.summary
+  end
 end
 
 def main
@@ -27,29 +46,17 @@ def main
  
   done = nil
   until done
-    puts "Would you like to: list planets, add a planet or exit?"
+    puts "Would you like to: list planets, planet details, add planet or exit?"
     choice = gets.chomp.downcase
 
     case choice 
     when "list planets"
       print "Planets orbiting #{sun.star_name}\n"
       puts sun.list_planets
-      puts "What planet do you want to learn about?"
-      planet_choice = gets.chomp.capitalize.strip
-      planet_display = sun.find_planet_by_name(planet_choice)
-      if planet_display == nil 
-        puts "That planet is not in #{sun.star_name}. Please add this planet if you would like to do so."
-      else
-        puts planet_display.summary
-      end
-    when "add a planet"
-      puts "Great. You want to add a planet. We need some details."
-      print "What is your planet's name? >"
-      planet_name = gets.chomp 
-      user_planet = add_new_planet(planet_name)
-      sun.add_planet(user_planet) 
-      puts "Thanks for your help! Here's our updated list:"
-      puts sun.list_planets
+    when "planet details"
+      planet_details(sun)
+    when "add planet"
+      add_new_planet(sun)
     when "exit"
       puts "See you later!"
       done = true
