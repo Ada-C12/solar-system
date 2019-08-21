@@ -32,7 +32,7 @@ end
 # adds initial planets to the solar system
 def add_initial_planets(solar_system)
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e16, 'Only planet known to support life')
-  cyborg = Planet.new('Cyborg', 'neon green', 10.993e24,2.496e90, 'Humans have not yet discovered this planet' )
+  cyborg = Planet.new('Cyborg', 'neon green', 10.993e24, 2.496e90, 'Humans have not yet discovered this planet' )
   mars = Planet.new('Mars', 'red', 9.972e24, 2.496e16, 'This planet was named after the Roman god of war')
   solar_system.add_planet(earth)
   solar_system.add_planet(cyborg)
