@@ -29,15 +29,6 @@ class SolarSystem
         return "No planet with the #{planet_name} in this solar system!"
        
     end
-
-    # def distance_between(planet_one,planet_two)
-    #     @planets.each do |planet_one,planet_two)
-    #         distance = distance_between(planet_one,planet_two)
-    #     return distance
-    # end 
-
-
-
 end
 
 

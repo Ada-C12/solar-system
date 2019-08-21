@@ -44,27 +44,7 @@ def main
 
       end
 
-
-    # end
-    # while user_input != 2
-    #   print "Please enter the name of the planet you want more detail: "
-    #   planet_detail = gets.chomp.strip
-    #  # puts list
-    #   found_planet = solar_system.find_planet_by_name(planet_detail)
-    #   puts found_planet.summary
-      
-    # elsif
-    #     print "Invalid entry, Please select 1 to list the plant or 2 to exit "
-
     end
-
-
-
-      #  if user_input == "2"
-      #   exit
-      #  end
-
-      #   # puts list
      
   end
 
