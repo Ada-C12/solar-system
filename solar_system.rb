@@ -1,4 +1,3 @@
-require 'pry'
 class SolarSystem
   attr_reader :star_name, :planets, :instance_of_planet_class
   
