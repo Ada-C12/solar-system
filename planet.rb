@@ -18,4 +18,5 @@ class Planet
   def summary
     return "Let's learn about #{@name.capitalize}. It is #{@color}, it has a mass of #{@mass_kg} kg, and it orbits #{@distance_from_sun_km} kilometers from the sun. Fun fact: #{@fun_fact}. "
   end
+  
 end

@@ -23,10 +23,13 @@ class SolarSystem
     @planets.each do |planet|
       if planet_name.upcase == planet.name.upcase
         return planet.summary
-      else
-        return "I couldn't find that planet, hmm."
       end
     end
   end
+  
+  
+  
+  
+  
   
 end
