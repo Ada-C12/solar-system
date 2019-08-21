@@ -30,7 +30,8 @@ def main
     puts "Would you like to: list planets, add a planet or exit?"
     choice = gets.chomp.downcase
 
-    if choice == "list planets"
+    case choice 
+    when "list planets"
       print "Planets orbiting #{sun.star_name}\n"
       puts sun.list_planets
       puts "What planet do you want to learn about?"
@@ -41,7 +42,7 @@ def main
       else
         puts planet_display.summary
       end
-    elsif choice == "add a planet"
+    when "add a planet"
       puts "Great. You want to add a planet. We need some details."
       print "What is your planet's name? >"
       planet_name = gets.chomp 
@@ -49,10 +50,10 @@ def main
       sun.add_planet(user_planet) 
       puts "Thanks for your help! Here's our updated list:"
       puts sun.list_planets
-    elsif choice == "exit"
+    when "exit"
       puts "See you later!"
       done = true
-    else
+    else 
       puts "Invalid Entry" 
     end
   end
