@@ -51,7 +51,6 @@ end
 def planet_details(solar_system)
   puts "Which planet do you want to learn about?"
   choose_planet = gets.chomp.capitalize.to_s
-  planets = solar_system.planets
   planet = solar_system.find_planet_by_name(choose_planet)
   puts planet.summary
 end
