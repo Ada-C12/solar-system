@@ -2,6 +2,7 @@
 
 class SolarSystem
   attr_reader :star_name, :planets
+  attr_writer :planets
   # constructor
   def initialize(star_name)
     @star_name = star_name
@@ -20,8 +21,6 @@ class SolarSystem
     return listing
   end
   
-  
-  # pick it up at this (5)
   def find_planet_by_name(name)
     @planets.each do |planet_thing|
       if planet_thing.name.downcase == name.downcase

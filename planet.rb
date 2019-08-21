@@ -1,6 +1,6 @@
 
 class Planet
-  attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
+  attr_accessor :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
   
   # add a constructor
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
@@ -12,7 +12,7 @@ class Planet
   end
   
   def summary 
-    return "#{ @name } has a #{ @color } color, weighs approximately #{ @mass_kg } kgs, and is #{ @distance_from_sun_km } kms from the Sun. A fun fact about #{ @name } is: #{ @fun_fact }"
+    return "              #{ @name.upcase }\n****************************\n COLOR: #{ @color } \n APPROXIMATE MASS: #{ @mass_kg } KGS \n DISTANCE FROM ITS FAVE STAR: #{ @distance_from_sun_km } KM \n FUN FACT: #{ @fun_fact }"
   end 
   
 end
