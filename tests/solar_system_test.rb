@@ -102,7 +102,7 @@ describe "SolarSystem class" do
             expect (solar_system.find_planet_by_name(earth.name)).must_equal earth
         end
         
-        it "Error checks input" do
+        it "Error checks input: Arguments must be string" do
             mars = Planet.new(name: "Mars", color: "red-orange", mass_kg: 6.417e23, distance: 2.279e8, fact: 'The planet is named after Mars, the Roman god of war')
             earth = Planet.new(name: 'Earth', color: 'blue-green', mass_kg: 5.972e24, distance: 1.496e8, fact: 'Only planet known to support life')
             
