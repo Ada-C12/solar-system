@@ -25,9 +25,15 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_sought)
-    @planets.each do |test_against|
-      if test_against.name.downcase == planet_sought.downcase
-        return test_against
+    test_for_duplicates = @planets.select {|test_against| test_against.name.downcase == planet_sought.downcase}
+    if test_for_duplicates.length > 1
+      puts "Sorry, there is more than one planet by that name in our Solar System!"
+      return nil
+    else
+      @planets.each do |test_against|
+        if test_against.name.downcase == planet_sought.downcase
+          return test_against
+        end
       end
     end
   end
@@ -38,16 +44,19 @@ class SolarSystem
     found_planet = find_planet_by_name(planet_sought)
     while found_planet.class == Array
       puts "Sorry, I don't recognize that planet. Please try again."
-      print "What planet are you curious about? "
+      print "Which planet are you curious about? "
       planet_sought = gets.chomp
       found_planet = find_planet_by_name(planet_sought)
+    end
+    if found_planet == nil
+      return "Please try something else."
     end
     return found_planet.summary
   end
 
   def collect_planet_details
     print "\nWhat is your planet's name? "
-    planet = gets.chomp
+    planet = gets.chomp.capitalize
     print "What color is #{planet}? "
     color = gets.chomp
     print "What is the mass (in kg) of #{planet}? "
@@ -57,7 +66,7 @@ class SolarSystem
     print "What is a fun fact about #{planet}? "
     fun_fact = gets.chomp
     added_planet = Planet.new(planet, color, mass_kg, distance_from_sun_km, fun_fact)
-    puts "Summary of the latest planet added to our solar system: #{added_planet.summary}"
+    puts "\nSummary of the latest planet added to our solar system: #{added_planet.summary}"
     return added_planet
   end
 end
