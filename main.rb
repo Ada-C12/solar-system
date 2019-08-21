@@ -116,11 +116,11 @@ def add_new_planet(solar_system)
 end
 
 def print_menu
-  options = ["List all planets", "Distance between two planets", "Get planet details", "Add a planet", "Exit"]
-  
   puts "\nMAIN MENU"
   
-  options.each_with_index do |option, index|
+  menu_options = ["List all planets", "Distance between two planets", "Get planet details", "Add a planet", "Exit"]
+  
+  menu_options.each_with_index do |option, index|
     puts "#{index + 1}. #{option}"
   end
 end
@@ -148,23 +148,26 @@ def main
   while play
     print_menu
     print "\nPlease choose a menu number: "
-    answer = gets.chomp.downcase
+    answer = gets.chomp.to_i
+    
+    until (1..5).include?(answer)
+      print "Please enter a valid option: "
+      answer = gets.chomp.to_i
+    end
     
     case answer
-    when "1"
+    when 1
       puts "\n"
       puts solar_system.list_planets
-    when "2"
+    when 2
       puts get_distance_between(solar_system)
-    when "3"
+    when 3
       puts get_planet_details(solar_system)
-    when "4"
+    when 4
       add_new_planet(solar_system)
-    when "5"
+    when 5
       puts "Goodbye!"
       play = false
-    else
-      puts "Please choose a valid option."
     end
   end  
 end
