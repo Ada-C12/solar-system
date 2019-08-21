@@ -184,6 +184,12 @@ describe "TESTING solar_system.rb" do
   end
 end
 
-######### TEST SOLAR_SYSTEM.rb ################
+######### end TEST SOLAR_SYSTEM.rb ################
 
 
+
+
+######### TEST MAIN.rb ################
+# I did not bother to do this, 
+# ran out of time so did it manually instead 
+######### end TEST MAIN.rb ################

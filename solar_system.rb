@@ -33,14 +33,18 @@ class SolarSystem
     return lines.join("\n")
   end
   
-  
   def find_planet_by_name(planet_str)
     # given case-insens planet_str, returns corresp instance of Planet obj
+    
+    if planet_str.class != String
+      raise TypeError, "Argument #{planet_str} needs to be a string!"
+    end
+    
     @planets.each do |planet|
       return planet if (planet_str.upcase == planet.name.upcase)
     end
     
-    raise ArgumentError, "Planet #{planet_str.capitalize} does not exist in #{@star_name}'s solar system"
+    raise ArgumentError, "#{planet_str.capitalize} does not exist in #{@star_name}'s solar system"
   end
   
   def distance_between(planet1_str, planet2_str)
