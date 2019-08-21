@@ -32,6 +32,9 @@ def main
       puts solar_system.planet_details
     when "ADD PLANET", "3"
       solar_system.add_new_planet
+    when "EXIT", "4"
+    else
+      puts "\nYou have entered an invalid response. Please try again."
     end
   end
 end
