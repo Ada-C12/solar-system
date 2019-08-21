@@ -28,7 +28,6 @@ class SolarSystem
     end
     
     raise ArgumentError.new("Planet not found.") 
-    
   end
   
   def distance_between(planet1, planet2)
@@ -39,7 +38,4 @@ class SolarSystem
     
     return distance_between
   end
-  
-  
-  
 end
