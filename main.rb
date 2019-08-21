@@ -9,8 +9,8 @@ def main
   venus = Planet.new("Venus", "Brown", "39.e39", "20", "2nd Hottest Planet")
   mars = Planet.new("Mars", "Brown-Orange", "40.e27", "30", "Super Rocky")
   
-  puts earth.summary
-  
+  puts "\n#{earth.summary}"
+
   # Wave 2
   solar_system = SolarSystem.new("Sun")
   solar_system.add_planet(mercury)
