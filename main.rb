@@ -9,26 +9,11 @@ def main
   solar_system.add_planet(earth)
   solar_system.add_planet(mercury)
   
-  
   #list = solar_system.list_planets
-  
   
   #found_planet = solar_system.find_planet_by_name('Earth')
   #puts found_planet
   #puts found_planet.summary
-  
-  # def planet_details 
-  
-  #   puts "Which planet would you like to learn about?"
-  #   name = gets.chomp.to_s.downcase
-  #   learn_about_planet = solar_system.find_planet_by_name(name)
-  #   return learn_about_planet.summary
-  # end
-  
-  
-  
-  
-  
   
   puts "============YOUR SOLAR SYSTEM============"
   puts
@@ -44,7 +29,6 @@ def main
     2. Receieve planet details\n
     3. Add planet\n
     4. Exit"
-    
     puts
     print "Enter the number of which option you would like: "
     user_option = gets.chomp.to_s.downcase
@@ -56,19 +40,12 @@ def main
     when "2"
       unknown_planet = solar_system.planet_details
       p unknown_planet
-      # puts "Which planet would you like to learn about?"
-      # name = gets.chomp.to_s.downcase
-      # learn_about_planet = solar_system.find_planet_by_name(name)
-      # puts
-      # puts learn_about_planet.summary
-      # puts 
     when "3"
       users_planet = solar_system.new_planet
     when "4"
       exit
     else
       puts "Enter vaild option."
-      
     end
   end
 end

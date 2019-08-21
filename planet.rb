@@ -12,7 +12,6 @@ class Planet
   end
   
   def mass_check(mass_kg)
-    p mass_kg
     while mass_kg < 0
       print "Plant mass must be greater than zero. Mass: "
       return @mass_kg = gets.chomp
@@ -28,11 +27,7 @@ class Planet
     return @distance_from_sum_km
   end
   
-  
   def summary
     return "#{self.name} is a #{self.color} planet that weighs #{mass_check(self.mass_kg)} kg and is #{distance_check(self.distance_from_sum_km)} km from the sun. Fun fact: #{self.fun_fact}."
   end
-  
-  
-  
 end
