@@ -11,21 +11,22 @@ class SolarSystem
         @planets << planet
     end 
     def list_planets 
+        planet_string = ""
         puts "Planets orbiting #{@star_name}"
         i = 0 
-        plist = @planets.map do |planet|
-            i += 1
-            "#{i}: #{planet.name}"
+        @planets.each_with_index do |planet, i|
+            
+            planet_string += "#{i + 1}: #{planet.name} \n"
         end 
-        plist   
+        return planet_string   
     end 
     def find_planet_by_name (input_planet)
-        p = @planets.select {|planet| planet.name.upcase == input_planet.upcase}
-        if p.empty? 
+        planets_found = @planets.select {|planet| planet.name.upcase == input_planet.upcase}
+        if planets_found.empty? 
             return "The planet is not in the list"
             
         else 
-            return p[0]
+            return planets_found[0]
         end 
     end 
     
