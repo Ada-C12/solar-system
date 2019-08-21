@@ -75,7 +75,7 @@ describe "SolarSystem" do
     it "returns a message if the planet is not found" do
       expect(@solar_system.find_planet_by_name('what?')).must_equal "This planet was not found!"
     end
-
+    
     it "returns the object number if the planet is found and name variable is case-insentitive" do
       expect(@solar_system.find_planet_by_name('eArth')).must_equal @earth
     end
@@ -86,5 +86,5 @@ describe "SolarSystem" do
       expect(@solar_system.distance_between(@earth, @mars)).must_equal "The distance between Earth and Mars is 78340000.0km."
     end
   end
-
+  
 end
