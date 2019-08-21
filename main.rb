@@ -5,7 +5,7 @@ def main
   sun = SolarSystem.new("Sun")
   venus = Planet.new("Venus", "burnt sienna", 4.867e24, 108208930, "it is the second brightest object in the night sky")
   earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "I live on it")
-  mars = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "it has a mountain 3x the size of Everest")
+  mars = Planet.new("Mars", "red", 6.29e23, 2.279e8, "it has a mountain 3x the size of Everest")
   
   sun.add_planet(earth)
   sun.add_planet(venus)
@@ -31,8 +31,9 @@ def main
       when "list planets"
         puts sun.list_planets
       when "planet details"
+        puts "Please type the name of the planet you'd like to know more about?"
+        puts "Choose from the list below:"
         puts sun.list_planets
-        puts "Which planet?"
         option = gets.chomp
         puts sun.find_planet_by_name(option)
       when "add planet"

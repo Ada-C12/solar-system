@@ -27,7 +27,7 @@ class SolarSystem
   
   def create_planet
     puts "What is the planet's name?"
-    name = gets.chomp
+    name = gets.chomp.capitalize
     
     puts "What color is the planet?"
     color = gets.chomp
