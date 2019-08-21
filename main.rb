@@ -1,4 +1,3 @@
-require_relative 'lib/planet'
 require_relative 'lib/solar_system'
 
 def get_positive_number_from_user
@@ -102,7 +101,7 @@ def main
       print "Please enter in name of a planet you want to look up in our Solar System: "
       user_planet = get_string_input_from_user 
       planet = solar_system.find_planet_by_name(user_planet)
-      
+
       result_message = ""
       if planet == nil 
         result_message << "Oops, #{user_planet} doesn't exist in our Solar System\n" 
