@@ -25,17 +25,13 @@ class SolarSystem
     return "Planets orbiting #{@star_name} \n#{list_planet.join}"
   end
   
-  # def find_planet_by_name(planet)
-  #   puts "Enter a planet you would like to search:"
-  #   planet = gets.chomp.upcase
-  
-  #   if 
-  #     @planets.include?(planet)
-  #     puts planet
-  #   else
-  #     puts "Sorry bud"
-  #   end 
-  # end
-  
+  def find_planet_by_name(input)
+    puts "Enter a planet you would like to search:"
+    input = gets.chomp.upcase 
+    @planets.each do |planet|
+      if planet.name.upcase == input
+        return planet
+      end
+    end
+  end
 end
-

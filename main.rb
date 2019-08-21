@@ -18,9 +18,9 @@ def main
   solar_system.add_planet(mars)
   puts solar_system.list_planets
   
-  # puts solar_system.list_planets
-  # found_planet = solar_system.find_planet_by_name("earth")
-  # puts found_planet
+  found_planet = solar_system.find_planet_by_name("earth")
+  puts found_planet
+  puts found_planet.summary
 end
 
 main
