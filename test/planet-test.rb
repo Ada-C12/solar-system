@@ -13,6 +13,7 @@ describe "Planet" do
     test_mass_kg = 0
 
     except(test_mass_kg).must_raise ArgumentError
+  end
 
 
 end

@@ -1,5 +1,3 @@
-require_relative 'solar-system'
-
 class Planet
 
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
@@ -12,7 +10,6 @@ class Planet
     @fun_fact = fun_fact
   end
 
-  #
   def massChecker(mass_kg)
     if mass_kg > 0
       return mass_kg
