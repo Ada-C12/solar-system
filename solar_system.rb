@@ -4,7 +4,7 @@ require_relative "planet"
 class SolarSystem
   attr_reader :star_name, :planets  
 
-# take one parameter, star_name, and saves it in an instance variable
+  # take one parameter, star_name, and saves it in an instance variable
 # create @planets array, which will store all the planets
   def initialize(star_name)
     if star_name.class != String
@@ -69,7 +69,4 @@ class SolarSystem
     distance_between = (planet_1_distance_sun - planet_2_distance_sun).abs
     return distance_between
   end
-
-
-
 end  

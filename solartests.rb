@@ -7,8 +7,6 @@ require 'minitest/pride'
 require_relative 'solar_system'
 require_relative 'planet'
 
-
-
 Minitest::Reporters.use! 
 Minitest::Reporters::SpecReporter.new
 
@@ -44,7 +42,6 @@ describe 'initialize_tests' do
   end
 end
 
-
 # Tests for add_planet in solar_system
 describe 'add_planet_tests' do
   it 'planet input should be instance of class Planet' do
@@ -75,8 +72,7 @@ describe 'add_planet_tests' do
   end
 end
 
-# Tests for list_planets in solar_system
-
+# Tests for list_planets in solar_system - coming to a theater near you
 
 # Tests for find_planet_by_name method in solar_system
 describe 'find_planet_by_name_tests' do
@@ -116,7 +112,6 @@ describe 'find_planet_by_name_tests' do
       expect(result).must_be_instance_of Planet
     end
 end
-
 
 # Tests for distance_between in solar_system
 describe 'distance_between_tests' do
@@ -204,5 +199,48 @@ describe 'distance_between_tests' do
     
     result = solar_system.distance_between(planet_1, planet_2)
     expect(result).must_equal 1284400000.0
+  end
+end
+
+# Tests for planet initalization
+describe 'planet_initalize' do
+  it 'name should be string' do
+    expect{Planet.new(45, 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')}.must_raise TypeError
+  end
+
+  it 'color should be string' do
+    expect{Planet.new('earth', 45, 5.972e24, 1.496e8, 'Only planet known to support life')}.must_raise TypeError
+  end
+
+  it 'fun fact should be string' do
+    expect{Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 45)}.must_raise TypeError
+  end
+
+  it 'mass should not be string' do
+    expect{Planet.new('earth', 'blue-green', 'five', 1.496e8, 'Only planet known to support life')}.must_raise TypeError
+  end
+
+  it 'distance from sun should not be string' do
+    expect{Planet.new('earth', 'blue-green', 5.972e24, 'five', 'Only planet known to support life')}.must_raise TypeError
+  end
+
+  it 'name should not be nil' do
+    expect{Planet.new(nil, 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')}.must_raise TypeError
+  end
+
+  it 'color should not be nil' do
+    expect{Planet.new('earth', nil, 5.972e24, 1.496e8, 'Only planet known to support life')}.must_raise TypeError
+  end
+
+  it 'mass should not be nil' do
+    expect{Planet.new('earth', 'blue-green', nil, 1.496e8, 'Only planet known to support life')}.must_raise TypeError
+  end
+
+  it 'distance from sun should not be nil' do
+    expect{Planet.new('earth', 'blue-green', 5.972e24, nil, 'Only planet known to support life')}.must_raise TypeError
+  end
+
+  it 'fun fact should not be nil' do
+    expect{Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, nil)}.must_raise TypeError
   end
 end

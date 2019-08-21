@@ -2,6 +2,14 @@
 class Planet
   # Add a constructor to your Planet class - take in 5 parameters which are details about planet
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)  
+    if name.class != String || color.class != String || fun_fact.class != String
+      raise TypeError.new "Name, color, & funfact should be string inputs"
+    elsif mass_kg.class == String || distance_from_sun_km.class == String
+      raise TypeError.new "Mass & distance from sun should not be string inputs"
+    elsif name == nil || color == nil || mass_kg == nil || distance_from_sun_km == nil || fun_fact == nil
+      raise TypeError.new "None of the planet inputs should be nil"
+    end
+
     @name = name
     @color = color
     @mass_kg = mass_kg
