@@ -2,15 +2,16 @@ require_relative 'planet'
 require_relative 'solar_system'
 
 def main
-  earth = Planet.new('Earth', 'Blue-green', 5.972e24, 1.496e8, 'Only planet known to support capitalism')
-  venus = Planet.new('Venus', 'Pink', 8.6e24, 2.36e8, 'Gayest Planet')
+  earth = Planet.new('Earth', 'Blue-green', 5.972e24, 1.496e8, 'Only planet known to support capitalism :/')
+  venus = Planet.new('Venus', 'Pink', 8.6e24, 2.36e8, 'Gayest planet probably!')
+  mars = Planet.new('Mars', 'Reddish', 2.4e2, 6.17e5, 'Kind of like Earth, but red!')
   
   vega = SolarSystem.new('Vega')
   
   vega.add_planet(earth)
   vega.add_planet(venus)
   
-  menu = "\nThe solar system is soo cool! What do ya wanna know about?
+  menu = "\nThe solar system is soo vast! What do ya wanna know about?
   A. List of planets
   B. Planet details
   C. Add a planet"
