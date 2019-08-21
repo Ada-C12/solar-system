@@ -1,5 +1,4 @@
 require_relative 'planet'
-require 'pry'
 
 class SolarSystem
   
@@ -12,8 +11,9 @@ class SolarSystem
     @planets = []
   end
   
+  
   def add_planet(planet)
-    # adding entire planet object to planets array
+    # refactored to add entire planet object to planets array
     # (previous code just added the planet name)
     @planets << planet
   end
@@ -23,7 +23,7 @@ class SolarSystem
     @planets.each_with_index do |planet, index|
       planet_strings = planet_strings + "#{index + 1}" + ". " + planet.name + "\n"
     end
-    return "Planets orbiting #{star_name}: " + "\n" + "#{planet_strings}"
+    return "\nPlanets orbiting #{star_name}: " + "\n" + "#{planet_strings}" + "\n"
   end
   
   def find_planet_by_name(planet_name)

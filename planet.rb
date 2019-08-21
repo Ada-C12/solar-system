@@ -1,3 +1,5 @@
+require_relative 'solar_system'
+
 class Planet
   # make instance variables readable from outside class
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
