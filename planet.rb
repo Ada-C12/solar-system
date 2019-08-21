@@ -3,6 +3,8 @@
 # Week 3, Solar System Project
 
 class Planet 
+  attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
+  
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
     @name = name
     @color = color
@@ -11,10 +13,8 @@ class Planet
     @fun_fact = fun_fact
   end
   
-  attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
-  
   def summary
-    return "This planet is called #{@name}. It is #{@color} in color, #{@mass_kg} kilograms in weight, 
+    return "\nThis planet is called #{@name}. It is #{@color} in color, #{@mass_kg} kilograms in weight, 
     and #{@distance_from_sun_km} kilometers from the sun. A fun fact about this planet: #{@fun_fact}."
   end
 end
