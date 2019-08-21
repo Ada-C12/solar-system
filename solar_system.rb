@@ -20,9 +20,20 @@ class SolarSystem
   
   def find_planet_by_name(planet_name)
     planet_name.capitalize!
-
-    search = @planets.find { |planet| planet.name == planet_name}
+    
+    search = @planets.find { |planet| planet.name == planet_name }
     return search
   end
   
+  def distance_between(planet_one, planet_two)
+    planet_one.capitalize!
+    planet_two.capitalize!
+    
+    first = find_planet_by_name(planet_one)
+    second = find_planet_by_name(planet_two)
+    
+    distance = first.distance_from_sun_km - second.distance_from_sun_km
+    # return the absolute value of calculation
+    return "The distance between #{planet_one} and #{planet_two} is #{distance.abs}km."
+  end
 end
