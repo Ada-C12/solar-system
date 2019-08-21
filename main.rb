@@ -115,6 +115,16 @@ def add_new_planet(solar_system)
   solar_system.add_planet(planet)
 end
 
+def print_menu
+  options = ["List all planets", "Distance between two planets", "Get planet details", "Add a planet", "Exit"]
+  
+  puts "\nMAIN MENU"
+  
+  options.each_with_index do |option, index|
+    puts "#{index + 1}. #{option}"
+  end
+end
+
 def main
   # Create some planets
   zorg = Planet.new("Zorg", "purple", 4.12e24, 57.9e6, "Planet has a roller coaster.")  
@@ -136,20 +146,21 @@ def main
   play = true
   
   while play
-    print "\nYour options are 'list planets', 'distance between', 'planet details', 'add planet', or 'exit': "
+    print_menu
+    print "\nPlease choose a menu number: "
     answer = gets.chomp.downcase
     
     case answer
-    when "list planets"
+    when "1"
       puts "\n"
       puts solar_system.list_planets
-    when "distance between"
+    when "2"
       puts get_distance_between(solar_system)
-    when "planet details"
+    when "3"
       puts get_planet_details(solar_system)
-    when "add planet"
+    when "4"
       add_new_planet(solar_system)
-    when "exit"
+    when "5"
       puts "Goodbye!"
       play = false
     else
