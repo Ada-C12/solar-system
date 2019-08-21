@@ -29,10 +29,11 @@ def main
   when "A"
     puts solar_system.list_planets
   when "B"
-    puts solar_system.produce_planet_details
+    print "\nWhich planet are you curious about? "
+    planet_sought = gets.chomp
+    puts solar_system.produce_planet_details(planet_sought)
   when "C"
-    new_planet = solar_system.collect_planet_details
-    solar_system.add_planet(new_planet)
+    solar_system.add_planet(collect_planet_details)
   when "D"
     puts "You are now leaving the Solar System!"
     exit
@@ -51,16 +52,32 @@ def main
     when "A"
       puts solar_system.list_planets
     when "B"
-      puts solar_system.produce_planet_details
+      print "\nWhich planet are you curious about? "
+      planet_sought = gets.chomp
+      puts solar_system.produce_planet_details(planet_sought)
     when "C"
-      new_planet = solar_system.collect_planet_details
-      puts new_planet
-      solar_system.add_planet(new_planet)
+      solar_system.add_planet(collect_planet_details)
     when "D"
       puts "You are now leaving the Solar System!"
       exit
     end
   end
+end
+
+def collect_planet_details
+  print "\nWhat is your planet's name? "
+  planet = gets.chomp.capitalize
+  print "What color is #{planet}? "
+  color = gets.chomp
+  print "What is the mass (in kg) of #{planet}? "
+  mass_kg = gets.chomp.to_f
+  print "What is #{planet}'s distance from the sun? "
+  distance_from_sun_km = gets.chomp.to_f
+  print "What is a fun fact about #{planet}? "
+  fun_fact = gets.chomp
+  added_planet = Planet.new(planet, color, mass_kg, distance_from_sun_km, fun_fact)
+  puts "\nSummary of the latest planet added to our solar system: #{added_planet.summary}"
+  return added_planet
 end
 
 main

@@ -15,10 +15,8 @@ class Planet
   end
 
   def check_number_validity(num, measure)
-    unless num > 0
-      print "Positive number for #{measure}, please: "
-      num = gets.chomp
+    if num < 0
+      raise ArgumentError, "Number is negative."
     end
-    return num
   end
 end

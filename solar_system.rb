@@ -38,9 +38,7 @@ class SolarSystem
     end
   end
 
-  def produce_planet_details
-    print "\nWhich planet are you curious about? "
-    planet_sought = gets.chomp
+  def produce_planet_details(planet_sought)
     found_planet = find_planet_by_name(planet_sought)
     while found_planet.class == Array
       puts "Sorry, I don't recognize that planet. Please try again."
@@ -52,21 +50,5 @@ class SolarSystem
       return "Please try something else."
     end
     return found_planet.summary
-  end
-
-  def collect_planet_details
-    print "\nWhat is your planet's name? "
-    planet = gets.chomp.capitalize
-    print "What color is #{planet}? "
-    color = gets.chomp
-    print "What is the mass (in kg) of #{planet}? "
-    mass_kg = gets.chomp.to_f
-    print "What is #{planet}'s distance from the sun? "
-    distance_from_sun_km = gets.chomp.to_f
-    print "What is a fun fact about #{planet}? "
-    fun_fact = gets.chomp
-    added_planet = Planet.new(planet, color, mass_kg, distance_from_sun_km, fun_fact)
-    puts "\nSummary of the latest planet added to our solar system: #{added_planet.summary}"
-    return added_planet
   end
 end
