@@ -21,7 +21,30 @@ class SolarSystem
   end 
   
   def find_planet_by_name(selection)
-    @planets.find { |planet| planet.name.downcase == selection.downcase}
+    planet = @planets.find { |planet| planet.name.downcase == selection.downcase}
+    return planet.summary
+  end
+  
+  def create_planet
+    puts "What is the planet's name?"
+    name = gets.chomp
+    
+    puts "What color is the planet?"
+    color = gets.chomp
+    
+    puts "What is its mass in kg?"
+    mass = gets.chomp.to_f
+    
+    puts "What is it's distance from the sun in km?"
+    distance = gets.chomp.to_f
+    
+    puts "And last, what's a fun fact about it?"
+    fun_fact = gets.chomp
+    
+    planet = Planet.new(name, color, mass, distance, fun_fact)
+    
+    @planets << planet
+    
   end
   
 end 
