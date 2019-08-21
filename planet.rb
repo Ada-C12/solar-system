@@ -8,11 +8,11 @@ class Planet
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
     until @mass_kg > 0
-      raise ArgumentError, "Your planet's mass must be greater than 0. Please input new and better planet data."
+      puts "Error: your planet's mass must be greater than 0. Please input the planet's weight in kg again:"
       @mass_kg = gets.chomp.to_i
     end 
     until @distance_from_sun_km > 0
-      raise ArgumentError, "Your planet's distance from the sun must be greater than 0. Please input new and better planet data."
+      puts "Your planet's distance from the sun must be greater than 0. Please input the planet's distance from the sun in km again:"
       @distance_from_sun_km = gets.chomp.to_i
     end
   end

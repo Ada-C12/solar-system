@@ -31,7 +31,7 @@ describe 'Solar System class' do
     pluto = Planet.new('Pluto', 'blue', 1000, 10, 'it is a controversial planet pick')
     solar_system.add_planet(pluto)
     
-    kuiper_belt = Planet.new('Kuiper Belt', 'gray', 10, 19, 'it is not a planet at all just rocks')
+    kuiper_belt = Planet.new('Kuiper Belt', 'gray', 10, 19, 'it is not a planet at all, just rocks')
     solar_system.add_planet(kuiper_belt)
     
     # Assert

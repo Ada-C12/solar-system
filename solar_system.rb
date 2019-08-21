@@ -21,7 +21,7 @@ class SolarSystem
       if planet.name == input.capitalize 
         return planet
       end 
-    end 
+    end  
     return "We could not find your planet :/"
   end 
   
