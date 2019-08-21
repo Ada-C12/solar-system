@@ -1,4 +1,3 @@
-require 'awesome_print'
 require_relative 'solar-system'
 require_relative 'planet'
 
@@ -21,26 +20,60 @@ def main
   solar_system.add_planet(earth)
   solar_system.add_planet(mars)
   solar_system.add_planet(jupiter)
+
+  user_input = ""
   
+  while user_input != 'exit' && user_input != '4'
+    puts "What would you like to do?"
+    puts "\n1. List planets\n2. Planet details\n3. Add planet\n4. Exit"
+  
+    user_input = gets.chomp.downcase.to_s
 
-  list = solar_system.list_planets
-  puts list
+    case user_input
+    when "list planets", "1"
+      puts "\n" + solar_system.list_planets
+    when "planet details", "2"
+      planet_details(solar_system)
+    when "add planet", "3"
+      add_planet(solar_system)
+    when "exit", "4"
+      exit
+    else
+      puts "#{user_input} is not an option!"
+    end
 
-  found_planet = solar_system.find_planet_by_name('Earth')
+    puts "\n"
 
-  #distance_planets = solar_system.distance_between('Earth', 'Venus')
+  end
+end
 
-  puts found_planet
 
-  puts found_planet.summary
+def planet_details(solar_system)
+  puts "Which planet do you want to learn about?"
+  choose_planet = gets.chomp.capitalize.to_s
+  planets = solar_system.planets
+  planet = solar_system.find_planet_by_name(choose_planet)
+  puts planet.summary
+end
+
+
+def add_planet(solar_system)
+  puts "Great! Please give some information about your planet:"
+  print "What is the name of the planet?: "
+  input_name = gets.chomp.capitalize
+  print "What color is it?: "
+  input_color = gets.chomp.downcase
+  print "What is its mass in kg?: "
+  input_mass = gets.chomp.to_f
+  print "How far is the planet from the sun in km?: "
+  input_distance = gets.chomp.to_f
+  print "Enter a fun fact about the planet!: "
+  input_fact = gets.chomp.to_s
+
+  new_planet = Planet.new(input_name, input_color, input_mass, input_distance, input_fact)
+
+  return solar_system.add_planet(new_planet)
+
 end
 
 main
-
-# found_planet = solar_system.find_planet_by_name('Earth')
-
-# # found_planet is an instance of class Planet
-# puts found_planet
-# # => #<Planet:0x00007fe7c2868ee8>
-
-# puts found_planet.summary

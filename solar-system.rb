@@ -27,7 +27,6 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_to_find)
-    ap @planets
     found_planet = @planets.find(ifnone = nil) {|planet| planet.name.capitalize == planet_to_find.capitalize}
     return found_planet
   end
@@ -45,11 +44,3 @@ end
   #   return distance
   #   end
   # end
-
-  # def list_planets
-  #   list = @planets.each_with_index.map do |planet, i|
-  #     "#{i +1}. #{planet.name}"
-  #   end
-  #   return "Planets orbiting #{@star_name}: \n#{list.join("\n")}"
-  # end
-

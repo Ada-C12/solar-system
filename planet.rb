@@ -12,6 +12,7 @@ class Planet
     @fun_fact = fun_fact
   end
 
+  #
   def massChecker(mass_kg)
     if mass_kg > 0
       return mass_kg
