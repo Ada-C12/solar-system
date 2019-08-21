@@ -11,11 +11,10 @@ class SolarSystem
   end
 
   def list_planets
-    planet_list = @planets.each_with_index.map{|planet, i| "#{i += 1}. #{planet.name}"}
-    return planet_list
+    return @planets.each_with_index.map{ |planet, i| "#{i += 1}. #{planet.name}" }
   end
 
   def find_planet_by_name(planet_name)
-    @planets.find {|planet| planet.name == planet_name.capitalize} 
+    return @planets.find{ |planet| planet.name == planet_name.capitalize } 
   end
 end
