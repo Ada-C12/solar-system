@@ -1,6 +1,7 @@
 # main.rb
 require_relative 'planet'
 require_relative 'solar_system'
+require 'pry'
 
 def main
 
@@ -55,11 +56,11 @@ def main
       planet_fun_fact = gets.chomp
       
       planet_instance = Planet.new(planet_name, planet_color, planet_mass, planet_distance, planet_fun_fact)
-      
+
       solar_system.add_planet(planet_instance)
       list = solar_system.list_planets
       puts list
-      
+
     else program_running = false
       exit
     end 
@@ -68,28 +69,3 @@ def main
 end
 
 main
-
-# def main
-
-#   solar_system = SolarSystem.new('Sun')
-
-#   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
-#   # puts "Here is a planet named #{earth.name}"
-#   # puts "Description: #{earth.summary}"
-#   solar_system.add_planet(earth)
-
-#   pluto = Planet.new('Pluto', 'blue', 1.309e22, 5.906e38, 'No longer a planet ;(')
-#   solar_system.add_planet(pluto)
-
-#   list = solar_system.list_planets
-#   # puts list
-
-#   found_planet = solar_system.find_planet_by_name('pluto')
-
-#   # found_planet is an instance of class Planet
-#   puts found_planet
-#   # => #<Planet:0x00007fe7c2868ee8>
-
-#   puts found_planet.summary
-#   # => Earth is a blue-green planet ...
-# end
