@@ -84,14 +84,8 @@ def get_new_planet_details(system)
       puts "Planet #{info[:request]}:"
       input = gets.chomp
     end
-    # info["type"] == "string" ? \
-    # new_planet_details[detail] = input.capitalize \
-    # : new_planet_details[detail] = input.to_i
-    # ORRRR:
-    # set newplanetdetails[detail] equal to input sent to formatter
     new_planet_details[detail] = format_detail(info[:format],input)
   end
-  puts "new planet details: #{new_planet_details}"
   system.add_planet(Planet.new(new_planet_details["name"], \
     new_planet_details["color"], \
     new_planet_details["mass_kg"], \
