@@ -1,22 +1,105 @@
 require_relative 'lib/planet'
 require_relative 'lib/solar_system'
 
-def main
-    names = %w(Earth Mars)
-    colors = %w(blue-green red-orange)
-    mass_kgs = [5.972e24, 6.417e23]
-    distances_from_sun_km = [1.496e8, 2.279e8]
-    fun_facts = ['Only planet known to support life', 'The planet is named after Mars, the Roman god of war']
+def get_positive_number_from_user
+    input = Integer(gets.chomp) rescue false
+    while !input || input <= 0
+        print "Invalid input. Input must be a positive number: "
+        input = Integer(gets.chomp) rescue false
+    end 
+    return input  
+end
+
+def get_string_input_from_user()
+    input = gets.chomp.strip.downcase
+    while input.empty?
+        print "Input cannot be empty"
+        input = gets.chomp.strip.downcase
+    end
+    return input
+end
+
+def print_decisions(decisions)
+    puts "Here are some options you can choose: "
+    decisions.length.times do |index|
+        puts "#{index + 1}. #{decisions[index].capitalize}"
+    end
+end
+
+def get_decision(decisions)
+    puts "What would you like to do next? "
+    print_decisions(decisions)
     
+    decision = get_string_input_from_user
+    while !(decisions.include? decision)
+        puts "Hey, that's not a valid decision"
+        print_decisions(decisions)
+        decision = get_string_input_from_user
+    end
+    return decision
+end
+
+def create_planet
+    print "Please enter in your planet's name: "
+    name = get_string_input_from_user
+    print "Please enter in your planet's color: "
+    color = get_string_input_from_user
+    print "Please enter in your planet's mass_kg: "
+    mass_kg = get_positive_number_from_user
+    print "Please enter in your planet's distance from the sun: "
+    distance = get_positive_number_from_user
+    print "Please enter in your planet's fun fact: "
+    fact = get_string_input_from_user
+    return Planet.new(name: name, color: color, mass_kg: mass_kg, distance: distance, fact: fact)
+end
+
+def get_2_planet_names_from_user(solar_system)
+    print "Please enter in name of 2 planets of which you want to calculate the distance between: "
+    user_planet_names = Array.new
+    2.times do 
+        planet = get_string_input_from_user
+        while solar_system.find_planet_by_name(planet) == nil
+            puts "This planet doesn't exist in our Solar System"
+            puts solar_system.list_planets
+            planet = get_string_input_from_user
+        end
+        user_planet_names << planet
+    end
+    return user_planet_names
+end
+
+def main
     solar_system = SolarSystem.new('Sol')
-    2.times do |index|
-        planet = Planet.new(name: names[index], color: colors[index], mass_kg: mass_kgs[index], distance: distances_from_sun_km[index], fact: fun_facts[index])
-        puts planet.summary
+    print "How many planets would you like to enter in: "
+    number_of_planets = get_positive_number_from_user
+    number_of_planets.times do |i|
+        planet = create_planet
         solar_system.add_planet(planet)
     end
     
-    list = solar_system.list_planets
-    puts list
-    
+    available_decisions = ["planet details", "add planet", "list planets", "calculate distance", "exit"]
+    while true
+        user_decision = get_decision(available_decisions)
+        case user_decision
+        when "calculate distance"
+            user_planet_names = get_2_planet_names_from_user(solar_system)
+            distance = solar_system.distance_between(user_planets[0],user_planets[1])
+            puts "The distance between #{user_planets[0].capitalize} and #{user_planets[1].capitalize} is #{distance} km"
+        when "planet details"
+            print "Please enter in name of a planet you want to look up in our Solar System: "
+            user_planet = get_string_input_from_user 
+            planet = solar_system.find_planet_by_name(user_planet)
+            result_message = planet == nil ? "Oops, this planet doesn't exist in our Solar System" : "This is the first result we found in our Solar System about #{user_planet.capitalize}:\n #{planet.summary}"
+            puts result_message
+        when "add planet"
+            planet = create_planet()
+            solar_system.add_planet(planet)
+            puts solar_system.list_planets
+        when "list planets"
+            puts solar_system.list_planets
+        else
+            exit
+        end
+    end
 end
 main
