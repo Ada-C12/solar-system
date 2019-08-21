@@ -11,7 +11,7 @@ class Planet
   end
   
   def summary
-    return "#{@name} is a #{@color} planet. #{@name}'s mass is #{@mass_kg}kg and is #{@distance_from_sun_km} kilometers from the sun. #{@name} #{@fun_fact.downcase}." # why does this work without @ symbol?
+    return "#{@name} is a #{@color} planet. #{@name}'s mass is #{@mass_kg}kg and is #{@distance_from_sun_km} kilometers from the sun. #{@name} #{@fun_fact.downcase}."
   end
   
 end
