@@ -1,3 +1,5 @@
+# Wave 2
+
 # Build a second class, SolarSystem, which is responsible for keeping track of a collection of instances of Planet
 class SolarSystem
   attr_reader :star_name, :planets, :inst_planet
