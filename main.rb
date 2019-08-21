@@ -15,10 +15,7 @@ def input_add_planet(solar_system)
     
     
     new_planet = Planet.new(name: input_name, color: input_color, mass_kg: input_mass, distance_from_sun_km: input_distance_from_sun, fun_fact: input_fun_fact)
-    solar_system.add_planet(new_planet)
-    
-    
-    
+    solar_system.add_planet(new_planet)  
 end 
 
 def planet_details(solar_system)
@@ -53,20 +50,8 @@ def  main
             input_add_planet(my_solar_system)
         end 
     end 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+       
 end
-
-
-
 
 main 
 
