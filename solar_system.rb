@@ -2,9 +2,9 @@ class SolarSystem
   
   attr_reader :star_name, :planets
 
-  def initialize(star_name, planets)
+  def initialize(star_name)
     @star_name = star_name
-    @planets = planets
+    @planets = []
   end
 
   def add_planet(planet)
@@ -24,11 +24,10 @@ class SolarSystem
   def find_planet_by_name(planet_name)
   i=0
     @planets.each do |planet|
-     if planet.name == planet_name.capitalize
-      puts planet.name
-      return @planets[i]
-    end
+      if planet.name == planet_name
+        return @planets[i]
+      end
     i += 1
-  end
+    end
   end
 end
