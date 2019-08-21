@@ -29,8 +29,8 @@ class SolarSystem
       if planet.name.casecmp? planet_name
         planet_array << planet
       end
-    return planet_array[0]
     end
+    return planet_array[0]
   end
 
 end
