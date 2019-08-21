@@ -16,15 +16,22 @@ def main
   solar_system.add_planet(mars)
   solar_system.add_planet(jupiter)
   
-  continue = "Y"
-  while continue == "Y"
+  def display_CLI_options
     puts "What would you like to do? "
     puts "1. List planets"
     puts "2. Planet details"
     puts "3. Add Planet"
     puts "4. Find distance between two planets"
     puts "5. Exit"
-    
+  end
+  
+  def get_info_to_build_planet
+    return
+  end
+  
+  continue = true
+  while continue
+    display_CLI_options
     action = gets.chomp.downcase
     
     case action
@@ -59,7 +66,7 @@ def main
       puts "\nDistance: #{solar_system.distance_between(solar_system.find_planet_by_name(planet_1), solar_system.find_planet_by_name(planet_2))}\n\n"
       
     when "5", "exit"
-      continue = "N"
+      continue = false
       
     else
       raise ArguementError, "That is not a valid selection."
