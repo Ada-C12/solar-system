@@ -14,19 +14,29 @@ def main
   solar_system.add_planet(mars)
   solar_system.add_planet(venus)
   
-  puts "Enter '1' to list planet names, or '2' to exit."
+  puts "Enter '1' to list planet names, '2' to see planet details, or '3' to exit."
   decision = gets.chomp.to_s
-  while decision != "2"
+  
+  while decision != "3"
+    
     if decision == "1"
       puts solar_system.list_planets
-      puts "Enter '1' to list planet names, or '2' to exit."
+      puts "Enter '1' to list planet names, '2' to see planet details, or '3' to exit."
       decision = gets.chomp.to_s
-    elsif decision !="1" && decision !="2"
+      
+    elsif decision == "2"
+      found_planet = solar_system.find_planet_by_name("earth")
+      puts found_planet
+      puts found_planet.summary
+      puts "Enter '1' to list planet names, '2' to see planet details, or '3' to exit."
+      decision = gets.chomp.to_s
+      
+    elsif decision !="1" && decision !="2" && decision !="3"
       puts "Invalid entry."
       exit
     end
     
-    if decision == 2
+    if decision == "3"
       exit
     end
     
