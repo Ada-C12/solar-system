@@ -43,41 +43,39 @@ def main
   end
   
   
-  
   def run_control_loop(system, response)
     response = 0
     while response != 3
       puts "What would you like to do next? \n 1. list planets \n 2. learn details about a planet \n 3. add a planet \n 4. exit \nPress 1, 2, 3, or 4:"
+      response = gets.chomp.to_i
+      case response
+      when 1
+        puts system.list_planets
+      when 2
+        puts "Which planet would you like to learn about?"
+        chosen_planet = gets.chomp
+        puts system.find_planet_by_name(chosen_planet)
+      when 3
+        add_a_new_planet(system, "Y")
+      when 4
+        puts "Thanks for creating a solar system!"
+        puts system.saturn
+        exit
+      else
+        puts "Please press 1, 2, 3, or 4:"
         response = gets.chomp.to_i
-        case response
-        when 1
-          puts system.list_planets
-        when 2
-          puts "Which planet would you like to learn about?"
-          chosen_planet = gets.chomp
-          puts system.find_planet_by_name(chosen_planet)
-        when 3
-          add_a_new_planet(system, "Y")
-        when 4
-          puts "Thanks for creating a solar system!"
-          puts system.saturn
-          exit
-        else
-          puts "Please press 1, 2, 3, or 4:"
-          response = gets.chomp.to_i
-        end  
-      end    
-    end  
-    
-    if user_response == "Y"
-      add_a_new_planet(solar_system, user_response)
-    elsif user_response == "N"
-      run_control_loop(solar_system, user_response)
-    else
-      puts "Please enter Y or N:"
-    end
-    
+      end  
+    end    
+  end  
+  
+  if user_response == "Y"
+    add_a_new_planet(solar_system, user_response)
+  elsif user_response == "N"
+    run_control_loop(solar_system, user_response)
+  else
+    puts "Please enter Y or N:"
   end
   
-  main
-  
+end
+
+main

@@ -18,7 +18,7 @@ class SolarSystem
     count = 0
     @planets.map do |planet|
       count += 1
-      planets_string = planets_string + "\n#{count}. #{planet.name}"
+      planets_string += "\n#{count}. #{planet.name}"
     end
     return planets_string
   end
@@ -36,12 +36,12 @@ class SolarSystem
     # handles multiple planets with the same name
     if found_planet_summary.length > 1
       found_planet_summary.each do |planet|
-        found_planet_summary_string = found_planet_summary_string + planet.to_s + "\n"
+        found_planet_summary_string += planet.to_s + "\n"
       end
     elsif found_planet_summary.length == 1
       found_planet_summary_string = found_planet_summary[0]
     end
-    binding.pry
+
     if found_planet_summary_string != ""
       return found_planet_summary_string
     else
