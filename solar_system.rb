@@ -35,4 +35,15 @@ class SolarSystem
     
   end
   
+  def planet_details
+    planet_choice = ""
+    puts "\nWhich planet would you like to know about?"
+    print "Planet: "
+    planet_choice = gets.chomp.downcase
+    
+    found_planet = find_planet_by_name(planet_choice)
+    puts found_planet.summary
+  end
+  
+  
 end
