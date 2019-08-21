@@ -1,5 +1,3 @@
-SOLAR_SYSTEM = %w[mercury venus earth mars jupiter saturn uranus neptune]
-
 class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
@@ -12,7 +10,7 @@ class Planet
   end
   
   def check_constructor
-    raise ArgumentError.new 'Invalid planet name!' if @name.class != String || !SOLAR_SYSTEM.include?(@name.downcase) 
+    raise ArgumentError.new 'Invalid planet name!' if @name.class != String 
     
     raise ArgumentError.new "Invalid planet color!" if @color.class != String 
     
