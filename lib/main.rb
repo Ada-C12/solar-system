@@ -40,6 +40,7 @@ def main
       
       planet = input1
       planet = Planet.new(input1.capitalize, input2, input3, input4, input5)
+      puts planet.summary
       our_solar_system.add_planet(planet)
     elsif task == "quit"
       break
