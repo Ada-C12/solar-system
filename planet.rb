@@ -12,7 +12,7 @@ class Planet
   end
 
   def summary
-    return "#{@name} is #{@color}, #{@mass_kg}kg, and #{@distance_from_sun_km}km from the Sun. One fun_fact about #{@name}: #{fun_fact}. Last but not leaset, #{@name}'s Guardian: #{sailor_moon_guardian}"
+    return "#{@name} is #{@color}, #{@mass_kg}kg, and #{@distance_from_sun_km}km from the Sun.\nOne fun_fact about #{@name}: #{fun_fact}.\nLast but not leaset, #{@name}'s Guardian: #{sailor_moon_guardian}"
   end
 
 end
