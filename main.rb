@@ -1,8 +1,5 @@
-# WAVE 1
 require_relative 'planet'
 require_relative 'solar_system'
-
-# WAVE 1
 
 def main # Creates solar system and populates it
   solar_system_1 = SolarSystem.new("Red Dwarf")
@@ -32,11 +29,8 @@ def main # Creates solar system and populates it
     print "Enter the name of the planet you want to search for: "
     planet_search = gets.chomp.upcase
     puts solar_system_1.find_planet_by_name(planet_search)
-    
   end
   
-  
 end
-
 
 main
