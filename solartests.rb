@@ -46,12 +46,36 @@ end
 
 
 # Tests for add_planet in solar_system
+describe 'add_planet_tests' do
+  it 'planet input should be instance of class Planet' do
+    solar_system = SolarSystem.new('Sol')
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    input_planet = "earth"
+    
+    expect{solar_system.add_planet(input_planet)}.must_raise TypeError
+  end
+
+  it 'planet input should not be nil' do
+    solar_system = SolarSystem.new('Sol')
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    input_planet = nil
+    
+    expect{solar_system.add_planet(input_planet)}.must_raise TypeError
+  end
+
+  it 'takes parameter and adds it to the list of planets' do
+    solar_system = SolarSystem.new('Sol')
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    saturn = Planet.new('saturn', 'yellow-brown', 5.683e26, 1.434e9, 'Best known for its fabulous ring system')
+    
+    solar_system.add_planet(earth)
+    solar_system.add_planet(saturn)
+
+    expect(solar_system.planets).must_equal [earth,saturn]
+  end
+end
+
 # Tests for list_planets in solar_system
-# Tests for find_planet_by_name in solar_system
-# Tests for distance_between in solar_system
-
-
-
 
 
 # Tests for find_planet_by_name method in solar_system
@@ -91,4 +115,94 @@ describe 'find_planet_by_name_tests' do
   
       expect(result).must_be_instance_of Planet
     end
+end
+
+
+# Tests for distance_between in solar_system
+describe 'distance_between_tests' do
+  it 'planet1 should not be nil' do
+    solar_system = SolarSystem.new('Sol')
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    saturn = Planet.new('saturn', 'yellow-brown', 5.683e26, 1.434e9, 'Best known for its fabulous ring system')
+      
+    solar_system.add_planet(earth)
+    solar_system.add_planet(saturn)
+    
+    planet_1 = nil
+    planet_2 = "saturn"
+
+    expect{solar_system.distance_between(planet_1, planet_2)}.must_raise TypeError
+  end
+
+  it 'planet1 input should be string' do
+    solar_system = SolarSystem.new('Sol')
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    saturn = Planet.new('saturn', 'yellow-brown', 5.683e26, 1.434e9, 'Best known for its fabulous ring system')
+      
+    solar_system.add_planet(earth)
+    solar_system.add_planet(saturn)
+    
+    planet_1 = earth
+    planet_2 = "saturn"
+
+    expect{solar_system.distance_between(planet_1, planet_2)}.must_raise TypeError
+  end
+  
+  it 'planet2 should not be nil' do
+    solar_system = SolarSystem.new('Sol')
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    saturn = Planet.new('saturn', 'yellow-brown', 5.683e26, 1.434e9, 'Best known for its fabulous ring system')
+      
+    solar_system.add_planet(earth)
+    solar_system.add_planet(saturn)
+    
+    planet_1 = "earth"
+    planet_2 = nil
+
+    expect{solar_system.distance_between(planet_1, planet_2)}.must_raise TypeError
+  end
+
+  it 'planet2 input should be string' do
+    solar_system = SolarSystem.new('Sol')
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    saturn = Planet.new('saturn', 'yellow-brown', 5.683e26, 1.434e9, 'Best known for its fabulous ring system')
+      
+    solar_system.add_planet(earth)
+    solar_system.add_planet(saturn)
+    
+    planet_1 = "earth"
+    planet_2 = saturn
+
+    expect{solar_system.distance_between(planet_1, planet_2)}.must_raise TypeError
+  end
+
+  it 'result should be positive number' do
+    solar_system = SolarSystem.new('Sol')
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    saturn = Planet.new('saturn', 'yellow-brown', 5.683e26, 1.434e9, 'Best known for its fabulous ring system')
+      
+    solar_system.add_planet(earth)
+    solar_system.add_planet(saturn)
+    
+    planet_1 = "earth"
+    planet_2 = "saturn"
+    
+    result = solar_system.distance_between(planet_1, planet_2)
+    expect(result).must_be :>, 0
+  end
+  
+  it 'takes two planet names and returns distance between them' do
+    solar_system = SolarSystem.new('Sol')
+    earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
+    saturn = Planet.new('saturn', 'yellow-brown', 5.683e26, 1.434e9, 'Best known for its fabulous ring system')
+      
+    solar_system.add_planet(earth)
+    solar_system.add_planet(saturn)
+    
+    planet_1 = "earth"
+    planet_2 = "saturn"
+    
+    result = solar_system.distance_between(planet_1, planet_2)
+    expect(result).must_equal 1284400000.0
+  end
 end

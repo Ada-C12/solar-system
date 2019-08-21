@@ -55,15 +55,10 @@ class SolarSystem
   
   # distance_between takes two planet names as parameters and returns the distance between them
   def distance_between(planet_1, planet_2)
-    if planet_1.class != String
-      raise TypeError.new "Inputed Planet 1 should be string"
-    elsif planet_1 == nil
-      raise TypeError.new "Inputed Planet 1 should not be nil"
-    elsif planet_2.class != String
-      raise TypeError.new "Inputed Planet 2 should be string"
-    elsif planet_2 == nil
-      raise TypeError.new "Inputed Planet 2 should not be nil"
-    end
+      raise TypeError.new "Inputed Planet 1 should be string" if planet_1.class != String
+      raise TypeError.new "Inputed Planet 1 should not be nil" if planet_1 == nil
+      raise TypeError.new "Inputed Planet 2 should be string" if planet_2.class != String
+      raise TypeError.new "Inputed Planet 2 should not be nil" if planet_2 == nil
     
     planet1 = find_planet_by_name(planet_1)
     planet2 = find_planet_by_name(planet_2)
