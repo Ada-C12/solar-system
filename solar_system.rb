@@ -3,7 +3,7 @@
 class SolarSystem
   attr_reader :star_name, :planets
   attr_writer :planets
-  # constructor
+  
   def initialize(star_name)
     @star_name = star_name
     @planets = []
@@ -21,14 +21,13 @@ class SolarSystem
     return listing
   end
   
-  def find_planet_by_name(name)
-    @planets.each do |planet_thing|
-      if planet_thing.name.downcase == name.downcase
-        return planet_thing
+  def find_planet_by_name(name_of_planet_given)
+    @planets.each do |overall_planet_description|
+      if overall_planet_description.name.downcase == name_of_planet_given.downcase
+        return overall_planet_description
       end
     end
   end
-  
 end
 
 
