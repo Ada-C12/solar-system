@@ -30,13 +30,18 @@ class SolarSystem
         planet.summary
       end
     end
+    
+    found_planet_summary = found_planet_summary.compact
+    
+    # handles multiple planets with the same name
     if found_planet_summary.length > 1
       found_planet_summary.each do |planet|
-        found_planet_summary_string = found_planet_summary_string + planet 
+        found_planet_summary_string = found_planet_summary_string + planet.to_s + "\n"
       end
-    elsif found_planet_summary.length == 1 && found_planet_summary[0] != nil
+    elsif found_planet_summary.length == 1
       found_planet_summary_string = found_planet_summary[0]
     end
+    binding.pry
     if found_planet_summary_string != ""
       return found_planet_summary_string
     else
@@ -48,4 +53,19 @@ class SolarSystem
     return (planet_a.distance_from_sun_km - planet_b.distance_from_sun_km).abs
   end
   
+  def saturn
+    return "
+        ~+
+
+                 *       +
+           '                  |
+       ()    .-.,=\"``\"=.    - o -
+             '=/_       \\     |
+          *   |  '=._    |
+               \\     `=./`,        '
+            .   '=.__.=' `='      *
+   +                         +
+        O      *        '       .
+    "
+  end
 end
