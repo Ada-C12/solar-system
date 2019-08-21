@@ -17,7 +17,17 @@ def main
   #puts found_planet
   #puts found_planet.summary
   
-  puts "=======YOUR SOLAR SYSTEM======="
+  # def planet_details 
+  
+  #   puts "Which planet would you like to learn about?"
+  #   name = gets.chomp.to_s.downcase
+  #   learn_about_planet = solar_system.find_planet_by_name(name)
+  #   return learn_about_planet.summary
+  # end
+  
+  
+  
+  puts "============YOUR SOLAR SYSTEM============"
   puts
   puts "Welcome to your solar system! This solar system revolves around the star 'Sol'."
   puts 
@@ -25,16 +35,25 @@ def main
   play = gets.chomp
   
   while play == "y"
-    puts "Your two options are to 'list' the planets or 'exit'."
-    user_option = gets.chomp
-    if user_option.downcase == "list"
+    puts "Your options are to 'list' the planets, receieve 'planet details' or 'exit'."
+    user_option = gets.chomp.to_s.downcase
+    case user_option
+    when "list"
       puts list
+      puts
+    when "planet details"
+      puts "Which planet would you like to learn about?"
+      name = gets.chomp.to_s.downcase
+      learn_about_planet = solar_system.find_planet_by_name(name)
+      puts learn_about_planet.summary
+      puts 
+    when "exit"
+      exit
+    else
+      puts "Enter vaild option."
+      
     end
   end
-  
-  
-  
-  
 end
 
 main
