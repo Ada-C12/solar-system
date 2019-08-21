@@ -7,17 +7,18 @@ def main
 # create an instance of SolarSystem, add all your Planets to it
   solar_system = SolarSystem.new('Sol')
 
+# create two instances of Planet to start - earth and saturn
   earth = Planet.new('earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
   saturn = Planet.new('saturn', 'yellow-brown', 5.683e26, 1.434e9, 'Best known for its fabulous ring system')
-    
+
+# Add the two newly created planets to the array of planets
   solar_system.add_planet(earth)
   solar_system.add_planet(saturn)
 
-# Build a command line interface (CLI) to allow a user to interact with your classes
 # Enter a control loop that repeatedly asks the user what to do next
   input = ""
-  until input == "exit" || input == "4"
-    print "What would you like to do? (1. List Planets, 2. Planet Details 3. Add Planet 4. Exit) > "
+  until input == "exit" || input == "5"
+    print "What would you like to do? (1. List Planets, 2. Planet Details 3. Add Planet 4. Distance Between 5. Exit) > "
       input = gets.chomp.downcase
 
     case input
@@ -46,10 +47,23 @@ def main
         distance_from_sun = gets.chomp.to_s.downcase
       print "#{name} Fun Fact: "
         fact = gets.chomp.to_s.downcase
-
+      
       newplanet = Planet.new(name, color, mass, distance_from_sun, fact)
       solar_system.add_planet(newplanet)
+    
+    when "distance between", "distance", "4"
+      puts "Please enter planet 1: "
+        planet1 = gets.chomp
+        solar_system.find_planet_by_name(planet1)
+      puts "Please enter planet 2: "
+        planet2 = gets.chomp
+        solar_system.find_planet_by_name(planet2)
+      
+        distance = solar_system.distance_between(planet1, planet2)
 
+      puts "The distance between #{planet1} and #{planet2} is #{distance}km."
+    else
+      raise TypeError.new "You didn't enter a valid selection!"
     end
   end
 end

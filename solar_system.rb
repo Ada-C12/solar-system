@@ -51,6 +51,7 @@ class SolarSystem
         return planet_instance 
       end
     end
+    raise ArgumentError.new "Inputed Planet not included in list of planets" 
   end
   
   # distance_between takes two planet names as parameters and returns the distance between them
