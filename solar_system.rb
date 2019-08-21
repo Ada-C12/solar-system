@@ -1,3 +1,4 @@
+require "pry"
 class SolarSystem
   
   attr_reader :star_name, :planets, :name
@@ -25,12 +26,41 @@ class SolarSystem
   
   def find_planet_by_name (name)
     @planets.each do |planet|
+      #p @planet
       if planet.name.downcase == name.downcase
+        #p planet
+        #p name
         return planet
-      else
-        raise ArgumentError, "Not a known planet"
       end 
     end 
+  end
+  
+  def new_planet
+    #binding.pry
+    print "Planet's name: "
+    new_name = gets.chomp
+    print "Planet's color: "
+    new_color = gets.chomp
+    print "Planet's mass in kg: "
+    new_mass = gets.chomp.to_i
+    print "Planet's distance from the sun in km: "
+    new_distance = gets.chomp.to_i
+    print "Fun fact about planet: "
+    new_fun_fact = gets.chomp
+    puts
+    
+    new_name = Planet.new("#{new_name}", "#{new_color}", new_mass, new_distance, "#{new_fun_fact}")
+    
+    add_planet(new_name)
+  end
+  
+  def planet_details 
+    #binding.pry
+    
+    print "Enter the name of the planet you wish to learn about: "
+    name = gets.chomp.to_s.downcase
+    learn_about_planet = find_planet_by_name(name)
+    return learn_about_planet.summary
   end
   
 end

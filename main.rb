@@ -10,10 +10,10 @@ def main
   solar_system.add_planet(mercury)
   
   
-  list = solar_system.list_planets
+  #list = solar_system.list_planets
   
   
-  found_planet = solar_system.find_planet_by_name('Earth')
+  #found_planet = solar_system.find_planet_by_name('Earth')
   #puts found_planet
   #puts found_planet.summary
   
@@ -27,27 +27,44 @@ def main
   
   
   
+  
+  
+  
   puts "============YOUR SOLAR SYSTEM============"
   puts
   puts "Welcome to your solar system! This solar system revolves around the star 'Sol'."
   puts 
   puts "Would you like to enter your solar system? (y/n)"
   play = gets.chomp
+  puts
   
   while play == "y"
-    puts "Your options are to 'list' the planets, receieve 'planet details' or 'exit'."
+    puts "Now, you can either:\n
+    1. List the planets\n
+    2. Receieve planet details\n
+    3. Add planet\n
+    4. Exit"
+    
+    puts
+    print "Enter the number of which option you would like: "
     user_option = gets.chomp.to_s.downcase
+    puts
     case user_option
-    when "list"
-      puts list
+    when "1"
+      puts solar_system.list_planets
       puts
-    when "planet details"
-      puts "Which planet would you like to learn about?"
-      name = gets.chomp.to_s.downcase
-      learn_about_planet = solar_system.find_planet_by_name(name)
-      puts learn_about_planet.summary
-      puts 
-    when "exit"
+    when "2"
+      unknown_planet = solar_system.planet_details
+      p unknown_planet
+      # puts "Which planet would you like to learn about?"
+      # name = gets.chomp.to_s.downcase
+      # learn_about_planet = solar_system.find_planet_by_name(name)
+      # puts
+      # puts learn_about_planet.summary
+      # puts 
+    when "3"
+      users_planet = solar_system.new_planet
+    when "4"
       exit
     else
       puts "Enter vaild option."
