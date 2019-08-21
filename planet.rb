@@ -21,7 +21,7 @@ class Planet
   
   # create instance method to output a summary
   def summary
-    return "The planet #{@name} is #{@color} in color and weighs #{@mass_kg} kilograms."
+    return "The planet #{@name} is #{@color} in color. It weighs #{@mass_kg} kilograms and is #{@distance_from_sun_km} kilometers from the sun. Fun fact: #{@fun_fact}."
   end 
   
 end
