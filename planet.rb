@@ -13,6 +13,7 @@ class Planet
     @fun_fact = fun_fact
   end
   
+  # method that returns a nice summary of a planet
   def summary
     return "\nThis planet is called #{@name}. It is #{@color} in color, #{@mass_kg} kilograms in weight, 
     and #{@distance_from_sun_km} kilometers from the sun. A fun fact about this planet: #{@fun_fact}."

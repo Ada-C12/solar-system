@@ -6,6 +6,7 @@ require_relative 'planet'
 require_relative 'solar_system'
 
 def main
+  # initiating new solar system and planets
   solar_system = SolarSystem.new('Sol')
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
   mars = Planet.new('Mars', 'red', 6.39e23, 2.28e8, 'The planet is named after Mars, the Roman god of war')
@@ -13,6 +14,7 @@ def main
   solar_system.add_planet(earth)
   solar_system.add_planet(mars)
   
+  # user interaction to explore and search through planets
   do_next = nil
   until do_next == "EXIT" || do_next == "4"
     puts "\nWhat would you like to do?
