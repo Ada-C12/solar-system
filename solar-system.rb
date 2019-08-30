@@ -31,5 +31,14 @@ class SolarSystem
     end
     return "No Information Found"
   end
+  
+  def check_for_planet(planet)
+    @planets.each do |planet_name|
+      if planet_name.name == planet
+        return true
+      end
+    end
+    return false
+  end
 end
 
